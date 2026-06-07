@@ -1,0 +1,45 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="bg-coffee text-cream mt-24">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-14">
+    <div class="grid sm:grid-cols-3 gap-10">
+      <div>
+        <div class="display text-2xl mb-4">better out<span class="text-cream-soft">.</span></div>
+        <p class="font-serif italic text-cream-soft text-sm leading-relaxed max-w-xs">
+          Better out than in. The first mould-free, lab-tested coffee enema in South Africa — and a quiet library of guides on living well from the inside out.
+        </p>
+      </div>
+
+      <div>
+        <div class="label text-cream-soft mb-4">Library</div>
+        <ul class="space-y-2 font-serif text-cream/90">
+          <li><a href="/guides/" class="hover:text-cream underline-offset-4 hover:underline">All five guides</a></li>
+          <li><a href="/guides/steady/" class="hover:text-cream underline-offset-4 hover:underline">Steady</a></li>
+          <li><a href="/guides/kitchen-apothecary/" class="hover:text-cream underline-offset-4 hover:underline">The Kitchen Apothecary</a></li>
+          <li><a href="/guides/roots/" class="hover:text-cream underline-offset-4 hover:underline">Roots</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="label text-cream-soft mb-4">Hello</div>
+        <ul class="space-y-2 font-serif text-cream/90">
+          <li><a href="https://instagram.com/better.out.co" rel="me noopener" class="hover:text-cream underline-offset-4 hover:underline">@better.out.co</a></li>
+          <li><a href="/about/" class="hover:text-cream underline-offset-4 hover:underline">About Better Out Co.</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hairline mt-12 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs font-sans text-cream-soft/80">
+      <div>© {year} Better Out Co. · Cape Town, South Africa</div>
+      <div class="text-cream-soft/60">
+        <!-- TODO: replace with CIPC registration number + registered address -->
+        Reg. no. <span class="opacity-60">[pending]</span>
+      </div>
+    </div>
+
+    <p class="mt-6 text-xs font-sans text-cream-soft/60 leading-relaxed max-w-3xl">
+      The information shared on this site and in our guides is educational. It is not medical advice and is not a substitute for the care of a qualified health professional. Please consult your doctor before changing your diet, beginning a cleansing protocol, or starting any new wellness practice — especially if you are pregnant, breastfeeding, a child, frail, or taking medication.
+    </p>
+  </div>
+</footer>

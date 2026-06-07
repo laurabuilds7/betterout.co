@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  pages: number;
+  pdf: string;
+  slug: string;
+  level: string;
+  excerpt?: string;
+  variant?: "list" | "feature";
+}
+const { title, subtitle, pages, pdf, slug, level, excerpt, variant = "list" } = Astro.props;
+---
+<article class={`group relative ${variant === "feature" ? "bg-cream-soft/60 border-coffee/12" : "bg-cream-soft/40 border-coffee/10 hover:border-coffee/25"} border rounded-2xl p-7 sm:p-8 transition-colors`}>
+  <div class="flex items-center justify-between mb-4">
+    <span class="label text-kraft">{level}</span>
+    <span class="label text-coffee/45">{pages} pp</span>
+  </div>
+  <h3 class="display text-3xl sm:text-4xl text-coffee mb-3 leading-[1.05]">
+    <a href={`/guides/${slug}/`} class="hover:text-kraft transition-colors">{title}</a>
+  </h3>
+  <p class="font-serif italic text-coffee/75 mb-5 leading-relaxed">{subtitle}</p>
+  {excerpt && variant === "feature" && (
+    <p class="font-serif text-coffee/85 mb-6 leading-relaxed text-[1.0625rem]">{excerpt}</p>
+  )}
+  <div class="flex flex-wrap gap-3">
+    <a href={pdf} download class="btn-coffee">
+      Download free
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+    </a>
+    <a href={`/guides/${slug}/`} class="btn-outline">Read about it</a>
+  </div>
+</article>

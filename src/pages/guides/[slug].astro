@@ -1,0 +1,64 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+
+export async function getStaticPaths() {
+  const guides = await getCollection("guides");
+  return guides.map((g) => ({ params: { slug: g.data.slug }, props: { guide: g } }));
+}
+
+const { guide } = Astro.props;
+const { Content } = await render(guide);
+const all = (await getCollection("guides")).sort((a, b) => a.data.order - b.data.order);
+const idx = all.findIndex((g) => g.data.slug === guide.data.slug);
+const next = all[(idx + 1) % all.length];
+---
+<Base title={guide.data.title} description={guide.data.subtitle}>
+  <section class="max-w-3xl mx-auto px-5 sm:px-8 pt-14 sm:pt-20 pb-10">
+    <a href="/guides/" class="label text-coffee/55 hover:text-coffee transition-colors inline-flex items-center gap-2 mb-8">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      The library
+    </a>
+
+    <div class="flex flex-wrap items-center gap-3 mb-5">
+      <span class="label text-kraft">{guide.data.level}</span>
+      <span class="label text-coffee/45">{guide.data.pages} pages</span>
+    </div>
+
+    <h1 class="display text-5xl sm:text-7xl text-coffee leading-[0.98] mb-6">
+      {guide.data.title}
+    </h1>
+    <p class="font-serif italic text-xl sm:text-2xl text-coffee/75 leading-snug mb-10">
+      {guide.data.subtitle}
+    </p>
+
+    <div class="bg-cream-soft/60 border border-coffee/10 rounded-2xl p-7 sm:p-9 mb-10">
+      <p class="prose-body text-coffee/90 leading-relaxed mb-7 italic">
+        {guide.data.excerpt}
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href={guide.data.pdf} download class="btn-coffee">
+          Download · free PDF
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        </a>
+        <a href={guide.data.pdf} class="btn-outline" target="_blank" rel="noopener">Preview in browser</a>
+      </div>
+    </div>
+
+    <div class="prose-body text-coffee/85 leading-relaxed">
+      <Content />
+    </div>
+  </section>
+
+  <section class="bg-cream-soft/40 border-t border-coffee/10 mt-14">
+    <div class="max-w-3xl mx-auto px-5 sm:px-8 py-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+      <div>
+        <div class="label text-coffee/55 mb-2">Next in the library</div>
+        <a href={`/guides/${next.data.slug}/`} class="display text-2xl sm:text-3xl text-coffee hover:text-kraft transition-colors">
+          {next.data.title} →
+        </a>
+      </div>
+      <a href="/guides/" class="btn-outline">All five guides</a>
+    </div>
+  </section>
+</Base>

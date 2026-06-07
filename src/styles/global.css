@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  --color-coffee: #2E1A0D;
+  --color-coffee-soft: #3a2415;
+  --color-kraft: #7A4E2C;
+  --color-kraft-soft: #8e6240;
+  --color-cream: #F5E9D0;
+  --color-cream-soft: #EADFBE;
+  --color-cream-deep: #E2D3B0;
+  --color-ink: #1a1410;
+  --color-ink-soft: #564a40;
+
+  --font-display: "Alfa Slab One", "Iowan Old Style", Georgia, serif;
+  --font-serif: "Lora", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  --tracking-display: -0.01em;
+  --tracking-label: 0.18em;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-coffee);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-feature-settings: "kern", "liga";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.display {
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-display);
+  line-height: 1;
+}
+
+.prose-body {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+@media (min-width: 768px) {
+  .prose-body { font-size: 1.125rem; }
+}
+
+.hairline {
+  border-top: 1px solid color-mix(in srgb, var(--color-coffee) 18%, transparent);
+}
+
+.btn-coffee {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-coffee);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  transition: background 0.15s ease, transform 0.15s ease;
+  text-decoration: none;
+}
+.btn-coffee:hover { background: var(--color-coffee-soft); transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--color-coffee);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.78rem 1.3rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-coffee);
+  transition: background 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+}
+.btn-outline:hover { background: var(--color-coffee); color: var(--color-cream); }
