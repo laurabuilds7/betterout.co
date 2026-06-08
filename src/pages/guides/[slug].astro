@@ -12,53 +12,65 @@ const { Content } = await render(guide);
 const all = (await getCollection("guides")).sort((a, b) => a.data.order - b.data.order);
 const idx = all.findIndex((g) => g.data.slug === guide.data.slug);
 const next = all[(idx + 1) % all.length];
+const roman = ["I","II","III","IV","V","VI","VII","VIII","IX","X"];
+const num = roman[guide.data.order - 1] ?? String(guide.data.order);
 ---
 <Base title={guide.data.title} description={guide.data.subtitle}>
-  <section class="max-w-3xl mx-auto px-5 sm:px-8 pt-14 sm:pt-20 pb-10">
-    <a href="/guides/" class="label text-coffee/55 hover:text-coffee transition-colors inline-flex items-center gap-2 mb-8">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
-      The library
+
+  <section class="max-w-3xl mx-auto px-6 sm:px-10 pt-16 sm:pt-20 pb-12">
+    <a href="/guides/" class="label text-espresso/55 hover:text-espresso transition-colors inline-flex items-center gap-3 mb-14">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      The Library
     </a>
 
-    <div class="flex flex-wrap items-center gap-3 mb-5">
-      <span class="label text-kraft">{guide.data.level}</span>
-      <span class="label text-coffee/45">{guide.data.pages} pages</span>
+    <div class="text-center mb-10">
+      <div class="label-wide text-espresso/55 mb-6">
+        <span class="numeral text-sage text-lg mr-3">{num}</span>
+        {guide.data.level} · {guide.data.pages} pages
+      </div>
+
+      <h1 class="display text-espresso leading-[1.02] text-5xl sm:text-7xl md:text-[5.2rem] mb-8">
+        {guide.data.title}
+      </h1>
+
+      <p class="lede max-w-2xl mx-auto">
+        {guide.data.subtitle}
+      </p>
     </div>
 
-    <h1 class="display text-5xl sm:text-7xl text-coffee leading-[0.98] mb-6">
-      {guide.data.title}
-    </h1>
-    <p class="font-serif italic text-xl sm:text-2xl text-coffee/75 leading-snug mb-10">
-      {guide.data.subtitle}
-    </p>
+    <div class="rule-centre text-espresso/30 my-14">
+      <svg width="120" height="8" aria-hidden="true"><use href="#diamond-ornament"/></svg>
+    </div>
 
-    <div class="bg-cream-soft/60 border border-coffee/10 rounded-2xl p-7 sm:p-9 mb-10">
-      <p class="prose-body text-coffee/90 leading-relaxed mb-7 italic">
+    <div class="card-quiet p-9 sm:p-12 mb-14">
+      <p class="font-serif italic font-light text-espresso/85 leading-relaxed text-xl mb-9">
         {guide.data.excerpt}
       </p>
-      <div class="flex flex-wrap gap-3">
-        <a href={guide.data.pdf} download class="btn-coffee">
+      <div class="flex flex-wrap gap-5 items-center">
+        <a href={guide.data.pdf} download class="btn-espresso">
           Download · free PDF
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          <svg width="12" height="12" aria-hidden="true"><use href="#arrow-down"/></svg>
         </a>
-        <a href={guide.data.pdf} class="btn-outline" target="_blank" rel="noopener">Preview in browser</a>
+        <a href={guide.data.pdf} class="link-quiet" target="_blank" rel="noopener">Preview in browser</a>
       </div>
     </div>
 
-    <div class="prose-body text-coffee/85 leading-relaxed">
+    <div class="prose-body prose-guide text-espresso/85 leading-relaxed">
       <Content />
     </div>
   </section>
 
-  <section class="bg-cream-soft/40 border-t border-coffee/10 mt-14">
-    <div class="max-w-3xl mx-auto px-5 sm:px-8 py-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+  <section class="bg-bone-soft/50 border-t border-espresso/10 mt-20">
+    <div class="max-w-3xl mx-auto px-6 sm:px-10 py-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
       <div>
-        <div class="label text-coffee/55 mb-2">Next in the library</div>
-        <a href={`/guides/${next.data.slug}/`} class="display text-2xl sm:text-3xl text-coffee hover:text-kraft transition-colors">
-          {next.data.title} →
+        <div class="label-wide text-espresso/55 mb-3">Next in the library</div>
+        <a href={`/guides/${next.data.slug}/`} class="display text-3xl sm:text-4xl text-espresso hover:text-clay-deep transition-colors block">
+          {next.data.title}
+          <svg width="14" height="14" aria-hidden="true" class="inline-block ml-2 -mt-1 text-espresso/55"><use href="#arrow-right"/></svg>
         </a>
+        <p class="font-serif italic font-light text-espresso/65 mt-2 text-lg">{next.data.subtitle}</p>
       </div>
-      <a href="/guides/" class="btn-outline">All five guides</a>
+      <a href="/guides/" class="btn-outline shrink-0">All five guides</a>
     </div>
   </section>
 </Base>

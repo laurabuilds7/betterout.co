@@ -2,17 +2,18 @@
 import Base from "../layouts/Base.astro";
 ---
 <Base title="Not found" noindex>
-  <section class="max-w-2xl mx-auto px-5 sm:px-8 py-24 text-center">
-    <div class="label text-kraft mb-5">404</div>
-    <h1 class="display text-5xl sm:text-6xl text-coffee mb-6 leading-[1.02]">
-      Nothing in this corner.
+  <section class="max-w-2xl mx-auto px-6 sm:px-10 py-32 sm:py-40 text-center">
+    <div class="label-wide text-espresso/55 mb-10">№ 404</div>
+    <h1 class="display text-espresso leading-[1.02] text-5xl sm:text-7xl mb-8">
+      Nothing in<br/>
+      <span class="display-italic text-clay">this corner.</span>
     </h1>
-    <p class="prose-body italic text-coffee/75 mb-9">
+    <p class="lede mb-12 max-w-md mx-auto">
       The page you were looking for has gone elsewhere. The library is still right here.
     </p>
-    <div class="flex flex-wrap justify-center gap-3">
-      <a href="/" class="btn-coffee">Home</a>
-      <a href="/guides/" class="btn-outline">The library</a>
+    <div class="flex flex-wrap justify-center gap-7 items-center">
+      <a href="/" class="btn-espresso">Home</a>
+      <a href="/guides/" class="link-quiet">The library</a>
     </div>
   </section>
 </Base>

@@ -15,7 +15,7 @@ const {
   noindex = false,
 } = Astro.props;
 
-const fullTitle = title === "Better Out Co." ? title : `${title} · Better Out Co.`;
+const fullTitle = title === "Better Out Co." ? title : `${title} — Better Out Co.`;
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 <!doctype html>
@@ -24,12 +24,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#F4EFE4" />
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
   {noindex && <meta name="robots" content="noindex, nofollow" />}
   <link rel="canonical" href={canonical} />
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232E1A0D'/%3E%3Ctext y='24' x='16' font-size='20' font-family='Georgia,serif' font-weight='700' fill='%23F5E9D0' text-anchor='middle'%3Eb.%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F4EFE4'/%3E%3Ctext y='22' x='16' font-size='17' font-family='Cormorant,Georgia,serif' font-weight='300' font-style='italic' fill='%23221A12' text-anchor='middle'%3Eb%3C/text%3E%3C/svg%3E" />
 
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
@@ -39,9 +40,37 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 </head>
 <body class="min-h-screen flex flex-col">
+  <!-- shared SVG defs: a single thin botanical sprig -->
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+    <defs>
+      <symbol id="sprig" viewBox="0 0 60 120">
+        <path d="M30 4 L30 116" stroke="currentColor" stroke-width="0.7" fill="none"/>
+        <path d="M30 22 Q 18 26 14 38" stroke="currentColor" stroke-width="0.7" fill="none"/>
+        <path d="M30 38 Q 42 42 46 54" stroke="currentColor" stroke-width="0.7" fill="none"/>
+        <path d="M30 56 Q 18 60 14 72" stroke="currentColor" stroke-width="0.7" fill="none"/>
+        <path d="M30 74 Q 42 78 46 90" stroke="currentColor" stroke-width="0.7" fill="none"/>
+        <ellipse cx="13" cy="38" rx="5" ry="2.2" transform="rotate(-22 13 38)" stroke="currentColor" stroke-width="0.7" fill="none"/>
+        <ellipse cx="47" cy="54" rx="5" ry="2.2" transform="rotate(22 47 54)" stroke="currentColor" stroke-width="0.7" fill="none"/>
+        <ellipse cx="13" cy="72" rx="5" ry="2.2" transform="rotate(-22 13 72)" stroke="currentColor" stroke-width="0.7" fill="none"/>
+        <ellipse cx="47" cy="90" rx="5" ry="2.2" transform="rotate(22 47 90)" stroke="currentColor" stroke-width="0.7" fill="none"/>
+      </symbol>
+      <symbol id="diamond-ornament" viewBox="0 0 120 8">
+        <line x1="0" y1="4" x2="55" y2="4" stroke="currentColor" stroke-width="0.6"/>
+        <line x1="65" y1="4" x2="120" y2="4" stroke="currentColor" stroke-width="0.6"/>
+        <rect x="57" y="1" width="6" height="6" transform="rotate(45 60 4)" fill="#6E8278"/>
+      </symbol>
+      <symbol id="arrow-down" viewBox="0 0 24 24">
+        <path d="M12 3 V20 M5 13 L12 20 L19 13" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="arrow-right" viewBox="0 0 24 24">
+        <path d="M3 12 H20 M13 5 L20 12 L13 19" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+    </defs>
+  </svg>
+
   <Header />
   <main class="flex-1">
     <slot />

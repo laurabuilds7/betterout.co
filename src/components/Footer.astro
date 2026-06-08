@@ -1,44 +1,62 @@
 ---
 const year = new Date().getFullYear();
 ---
-<footer class="bg-coffee text-cream mt-24">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-14">
-    <div class="grid sm:grid-cols-3 gap-10">
-      <div>
-        <div class="display text-2xl mb-4">better out<span class="text-cream-soft">.</span></div>
-        <p class="font-serif italic text-cream-soft text-sm leading-relaxed max-w-xs">
-          Better out than in. The first mould-free, lab-tested coffee enema in South Africa — and a quiet library of guides on living well from the inside out.
+<footer class="bg-espresso text-bone mt-32">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 pt-20 pb-14">
+
+    <div class="rule-centre text-bone/40 mb-16">
+      <svg width="120" height="8" aria-hidden="true"><use href="#diamond-ornament"/></svg>
+    </div>
+
+    <div class="grid sm:grid-cols-12 gap-14 sm:gap-10">
+      <div class="sm:col-span-5">
+        <a href="/" class="block mb-5">
+          <span class="display text-3xl tracking-wider">better<span class="display-italic text-sage-soft">·</span>out</span>
+          <div class="label-wide text-bone/50 mt-1 text-[0.6rem]">Coffee · Cape Town · MMXXVI</div>
+        </a>
+        <p class="font-serif italic text-bone/70 text-lg leading-relaxed max-w-md mt-6">
+          The first mould-free, lab-tested coffee enema in South Africa — and a quiet library of guides on living well from the inside out.
         </p>
       </div>
 
-      <div>
-        <div class="label text-cream-soft mb-4">Library</div>
-        <ul class="space-y-2 font-serif text-cream/90">
-          <li><a href="/guides/" class="hover:text-cream underline-offset-4 hover:underline">All five guides</a></li>
-          <li><a href="/guides/steady/" class="hover:text-cream underline-offset-4 hover:underline">Steady</a></li>
-          <li><a href="/guides/kitchen-apothecary/" class="hover:text-cream underline-offset-4 hover:underline">The Kitchen Apothecary</a></li>
-          <li><a href="/guides/roots/" class="hover:text-cream underline-offset-4 hover:underline">Roots</a></li>
+      <div class="sm:col-span-3">
+        <div class="label-wide text-bone/45 mb-5">The Library</div>
+        <ul class="space-y-2.5 font-serif text-bone/85">
+          <li><a href="/guides/" class="hover:text-bone transition-colors">All five guides</a></li>
+          <li><a href="/guides/steady/" class="hover:text-bone transition-colors">I — Steady</a></li>
+          <li><a href="/guides/kitchen-apothecary/" class="hover:text-bone transition-colors">II — The Kitchen Apothecary</a></li>
+          <li><a href="/guides/low-tox-living/" class="hover:text-bone transition-colors">III — Low-Tox Living</a></li>
+          <li><a href="/guides/nourished-littles/" class="hover:text-bone transition-colors">IV — Nourished Littles</a></li>
+          <li><a href="/guides/roots/" class="hover:text-bone transition-colors">V — Roots</a></li>
         </ul>
       </div>
 
-      <div>
-        <div class="label text-cream-soft mb-4">Hello</div>
-        <ul class="space-y-2 font-serif text-cream/90">
-          <li><a href="https://instagram.com/better.out.co" rel="me noopener" class="hover:text-cream underline-offset-4 hover:underline">@better.out.co</a></li>
-          <li><a href="/about/" class="hover:text-cream underline-offset-4 hover:underline">About Better Out Co.</a></li>
+      <div class="sm:col-span-4">
+        <div class="label-wide text-bone/45 mb-5">Correspondence</div>
+        <ul class="space-y-2.5 font-serif text-bone/85">
+          <li>
+            <a href="https://instagram.com/better.out.co" rel="me noopener" target="_blank" class="hover:text-bone transition-colors">@better.out.co</a>
+            <span class="text-bone/40 ml-2 text-sm italic">— on Instagram</span>
+          </li>
+          <li><a href="/about/" class="hover:text-bone transition-colors">A note from the founder</a></li>
         </ul>
+        <p class="mt-8 font-serif italic text-bone/55 text-sm leading-relaxed max-w-xs">
+          The shop opens by appointment in late 2026. Until then, the library is open.
+        </p>
       </div>
     </div>
 
-    <div class="hairline mt-12 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs font-sans text-cream-soft/80">
-      <div>© {year} Better Out Co. · Cape Town, South Africa</div>
-      <div class="text-cream-soft/60">
+    <div class="rule-fine mt-16 mb-7" style="background: color-mix(in srgb, var(--color-bone) 18%, transparent);"></div>
+
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 label-wide text-bone/45">
+      <div>© {year} Better Out Co. — Cape Town</div>
+      <div class="text-bone/35">
         <!-- TODO: replace with CIPC registration number + registered address -->
-        Reg. no. <span class="opacity-60">[pending]</span>
+        Reg. no. <span class="opacity-75">[pending]</span>
       </div>
     </div>
 
-    <p class="mt-6 text-xs font-sans text-cream-soft/60 leading-relaxed max-w-3xl">
+    <p class="mt-7 text-xs font-sans font-light text-bone/45 leading-relaxed max-w-3xl">
       The information shared on this site and in our guides is educational. It is not medical advice and is not a substitute for the care of a qualified health professional. Please consult your doctor before changing your diet, beginning a cleansing protocol, or starting any new wellness practice — especially if you are pregnant, breastfeeding, a child, frail, or taking medication.
     </p>
   </div>

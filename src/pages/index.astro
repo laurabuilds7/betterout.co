@@ -11,109 +11,171 @@ const rest = guides.filter((g) => g.data.slug !== "steady");
 const totalPages = guides.reduce((n, g) => n + g.data.pages, 0);
 ---
 <Base>
-  <!-- Hero -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-cream-deep/40 via-cream to-cream"></div>
-    <div class="max-w-5xl mx-auto px-5 sm:px-8 pt-16 sm:pt-24 pb-12 sm:pb-16">
-      <div class="flex flex-wrap items-center gap-3 mb-7">
-        <span class="label inline-flex items-center px-3 py-1.5 rounded-full bg-coffee text-cream">! Not for drinking !</span>
-        <span class="label text-coffee/55">Cape Town · Est. 2026</span>
+
+  <!-- ───────── HERO ───────── -->
+  <section class="relative">
+    <div class="max-w-5xl mx-auto px-6 sm:px-10 pt-24 sm:pt-32 pb-24 sm:pb-36 text-center">
+      <div class="label-wide text-espresso/55 mb-10 fade-up">
+        A quiet ritual · Cape Town
       </div>
 
-      <h1 class="display text-5xl sm:text-7xl md:text-8xl text-coffee leading-[0.95]">
-        Yes, it's coffee.<br/>
-        <span class="text-kraft">It just goes elsewhere.</span>
+      <h1 class="display text-espresso leading-[1.02] text-[2.85rem] sm:text-7xl md:text-[6.2rem] tracking-tight fade-up-2">
+        Better out<br/>
+        <span class="display-italic text-clay">than in.</span>
       </h1>
 
-      <p class="mt-8 max-w-2xl prose-body italic text-coffee/80">
-        A liver-loving, cell-cleansing ritual for people who take their biohacking seriously — and a quiet library of guides on eating well, lightening your load, and healing at the root.
+      <p class="mt-12 lede max-w-2xl mx-auto fade-up-3">
+        The first mould-free, lab-tested coffee enema in South Africa.
+        A liver-loving ritual for the well, and a quiet library of guides on living from the inside out.
       </p>
 
-      <div class="mt-9 flex flex-wrap items-center gap-3">
-        <a href="#library" class="btn-coffee">Read the free library</a>
-        <a href="/about/" class="btn-outline">About Better Out Co.</a>
+      <div class="mt-14 flex flex-wrap items-center justify-center gap-7 fade-up-4">
+        <a href="#library" class="btn-espresso">Enter the Library</a>
+        <a href="#ritual" class="link-quiet">The ritual, in brief</a>
       </div>
 
-      <p class="mt-7 label text-coffee/45">First mould-free · Lab-tested · Coffee in bags + enema kit · Coming soon</p>
-    </div>
-  </section>
-
-  <!-- The reframe -->
-  <section class="border-y border-coffee/10 bg-cream-soft/40">
-    <div class="max-w-5xl mx-auto px-5 sm:px-8 py-14 sm:py-20 grid md:grid-cols-2 gap-10 md:gap-16 items-start">
-      <div>
-        <div class="label text-kraft mb-4">What is a coffee enema?</div>
-        <h2 class="display text-3xl sm:text-4xl text-coffee leading-tight mb-5">
-          A gentle, bottom-up flush — used since the 1920s.
-        </h2>
-      </div>
-      <div class="prose-body text-coffee/85 space-y-4">
-        <p>
-          Organic, mould-free coffee, brewed gently — not to drink — to stimulate the liver's main detox pathway. The caffeine is absorbed through the colon wall, signalling the liver to dump bile loaded with what doesn't belong.
-        </p>
-        <p>
-          Loved today by biohackers, athletes, and anyone serious about feeling clear, light, and well. Not magic, not extreme. Just one of the oldest tools in integrative wellness, made properly for the first time in South Africa.
-        </p>
+      <div class="mt-20 flex items-center justify-center gap-6 fade-up-4">
+        <span class="rule-fine w-12"></span>
+        <span class="label-wide text-espresso/45">Mould-free · Lab-tested · Organic</span>
+        <span class="rule-fine w-12"></span>
       </div>
     </div>
   </section>
 
-  <!-- Library -->
-  <section id="library" class="max-w-6xl mx-auto px-5 sm:px-8 py-16 sm:py-24">
-    <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
-      <div class="max-w-2xl">
-        <div class="label text-kraft mb-3">The library — free, always</div>
-        <h2 class="display text-4xl sm:text-5xl text-coffee leading-[1.05] mb-5">
-          Five little guides on living well from the inside out.
-        </h2>
-        <p class="prose-body text-coffee/75">
-          {totalPages} pages of plain-language, anti-hype wellness — written from Laura's kitchen in Cape Town. Start anywhere. Most readers begin with <a href="/guides/steady/" class="underline decoration-kraft underline-offset-4 hover:text-coffee">Steady</a>.
-        </p>
+  <!-- ───────── CHAPTER I — RITUAL ───────── -->
+  <section id="ritual" class="relative border-t border-espresso/10 bg-bone-soft/60">
+    <div class="max-w-5xl mx-auto px-6 sm:px-10 py-28 sm:py-36">
+      <div class="text-center mb-20">
+        <span class="numeral text-sage text-xl mr-3">I</span>
+        <span class="label-wide text-espresso/55">The Ritual</span>
+      </div>
+
+      <div class="grid md:grid-cols-12 gap-12 md:gap-20 items-start">
+        <div class="md:col-span-5">
+          <h2 class="display text-espresso leading-[1.04] text-4xl sm:text-5xl md:text-[3.2rem]">
+            A gentle, <span class="display-italic text-clay-deep">bottom-up</span> flush — kept by the well since the 1920s.
+          </h2>
+        </div>
+
+        <div class="md:col-span-6 md:col-start-7 prose-body text-espresso/85 space-y-6">
+          <p>
+            Organic, mould-free coffee, brewed gently — not to drink — to support the liver's primary detox pathway. The caffeine is absorbed through the colon wall, signalling the liver to release bile loaded with what doesn't belong.
+          </p>
+          <p>
+            Quietly kept by biohackers, athletes, and the wellness-led the world over. Not magic, not extreme. Simply one of the oldest tools in integrative wellness, finally made properly in South Africa.
+          </p>
+
+          <ul class="pt-4 space-y-3.5 label-wide text-espresso/60">
+            <li class="flex items-center gap-4"><span class="diamond"></span> Single-origin organic Arabica</li>
+            <li class="flex items-center gap-4"><span class="diamond"></span> Independently lab-tested · mould-free</li>
+            <li class="flex items-center gap-4"><span class="diamond"></span> Medium roast · cleansing brew</li>
+            <li class="flex items-center gap-4"><span class="diamond"></span> Made in Cape Town, by hand</li>
+          </ul>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Featured: Steady -->
-    <div class="mb-7">
-      <GuideCard
-        title={featured.data.title}
-        subtitle={featured.data.subtitle}
-        pages={featured.data.pages}
-        pdf={featured.data.pdf}
-        slug={featured.data.slug}
-        level={featured.data.level}
-        excerpt={featured.data.excerpt}
-        variant="feature"
-      />
+  <!-- ───────── PULL QUOTE ───────── -->
+  <section class="relative">
+    <div class="max-w-4xl mx-auto px-6 sm:px-10 py-28 sm:py-36 text-center">
+      <div class="rule-centre text-espresso/35 mb-10">
+        <svg width="120" height="8" aria-hidden="true"><use href="#diamond-ornament"/></svg>
+      </div>
+
+      <blockquote class="pull-quote">
+        The very thing meant to lighten the liver's load was, more often than not, adding to it. So I made the version I wished existed.
+      </blockquote>
+
+      <div class="mt-10 label-wide text-espresso/55">
+        Laura Weyel — Founder
+      </div>
     </div>
+  </section>
 
-    <div class="grid sm:grid-cols-2 gap-5">
-      {rest.map((g) => (
+  <!-- ───────── CHAPTER II — LIBRARY ───────── -->
+  <section id="library" class="relative border-t border-espresso/10 bg-bone-soft/40">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 py-28 sm:py-36">
+
+      <div class="text-center mb-16">
+        <span class="numeral text-sage text-xl mr-3">II</span>
+        <span class="label-wide text-espresso/55">The Library — complimentary</span>
+      </div>
+
+      <div class="max-w-3xl mx-auto text-center mb-20">
+        <h2 class="display text-espresso leading-[1.04] text-4xl sm:text-5xl md:text-[3.4rem] mb-8">
+          Five quiet guides on <span class="display-italic text-clay-deep">living well</span> from the inside out.
+        </h2>
+        <p class="lede">
+          {totalPages} pages of plain-language, anti-hype wellness — written by hand from a kitchen in Cape Town. Begin anywhere; most readers begin with <a href="/guides/steady/" class="underline decoration-clay/50 underline-offset-[6px] hover:text-clay-deep transition-colors">Steady</a>.
+        </p>
+      </div>
+
+      <!-- Featured -->
+      <div class="mb-6">
         <GuideCard
-          title={g.data.title}
-          subtitle={g.data.subtitle}
-          pages={g.data.pages}
-          pdf={g.data.pdf}
-          slug={g.data.slug}
-          level={g.data.level}
+          title={featured.data.title}
+          subtitle={featured.data.subtitle}
+          pages={featured.data.pages}
+          pdf={featured.data.pdf}
+          slug={featured.data.slug}
+          level={featured.data.level}
+          excerpt={featured.data.excerpt}
+          variant="feature"
+          index={0}
         />
-      ))}
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {rest.map((g, i) => (
+          <GuideCard
+            title={g.data.title}
+            subtitle={g.data.subtitle}
+            pages={g.data.pages}
+            pdf={g.data.pdf}
+            slug={g.data.slug}
+            level={g.data.level}
+            index={i + 1}
+          />
+        ))}
+      </div>
+
+      <div class="mt-16 flex justify-center">
+        <a href="/guides/" class="link-quiet">See the full library</a>
+      </div>
     </div>
   </section>
 
-  <!-- Product teaser -->
-  <section class="bg-coffee text-cream">
-    <div class="max-w-5xl mx-auto px-5 sm:px-8 py-16 sm:py-20 text-center">
-      <div class="label text-cream-soft mb-5">Better Out Co. — the product</div>
-      <h2 class="display text-4xl sm:text-5xl md:text-6xl leading-[1.05] mb-6">
-        Coffee in bags. Enema kit. Coming soon.
+  <!-- ───────── CHAPTER III — PRODUCT ───────── -->
+  <section class="relative bg-espresso text-bone overflow-hidden">
+    <svg aria-hidden="true" class="absolute right-[6%] top-16 w-24 h-48 text-bone/15 hidden md:block"><use href="#sprig"/></svg>
+    <svg aria-hidden="true" class="absolute left-[5%] bottom-12 w-20 h-40 text-bone/12 -scale-x-100 hidden md:block"><use href="#sprig"/></svg>
+
+    <div class="max-w-4xl mx-auto px-6 sm:px-10 py-32 sm:py-40 text-center relative">
+      <div class="text-center mb-14">
+        <span class="numeral text-sage text-xl mr-3">III</span>
+        <span class="label-wide text-bone/55">The Product — by appointment</span>
+      </div>
+
+      <h2 class="display text-4xl sm:text-6xl md:text-[5rem] leading-[1.02] mb-10">
+        Coffee in bags.<br/>
+        <span class="display-italic text-clay">The kit.</span><br/>
+        <span class="text-bone/70">Late 2026.</span>
       </h2>
-      <p class="prose-body italic text-cream/85 max-w-2xl mx-auto mb-9">
-        Lab-tested, guaranteed mould-free organic coffee, paired with a clean, well-made enema kit. The first of its kind in South Africa. Be the first to know — message us on Instagram.
+
+      <p class="lede text-bone/80 max-w-2xl mx-auto mb-14">
+        Lab-tested, guaranteed mould-free organic coffee, paired with a clean, well-made enema kit. The first of its kind in South Africa. To be among the first to know — write to us on Instagram.
       </p>
-      <a href="https://instagram.com/better.out.co" rel="me noopener" class="inline-flex items-center gap-2 bg-cream text-coffee font-sans font-semibold text-sm uppercase tracking-wider px-7 py-3.5 rounded-full hover:bg-cream-soft transition-colors">
-        @better.out.co
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-      </a>
+
+      <div class="flex flex-wrap items-center justify-center gap-7">
+        <a href="https://instagram.com/better.out.co" rel="me noopener" target="_blank" class="btn-bone">
+          @better.out.co
+        </a>
+        <a href="/about/" class="link-quiet text-bone" style="color: var(--color-bone);">
+          The story
+        </a>
+      </div>
     </div>
   </section>
+
 </Base>

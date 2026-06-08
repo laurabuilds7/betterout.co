@@ -8,26 +8,41 @@ interface Props {
   level: string;
   excerpt?: string;
   variant?: "list" | "feature";
+  index?: number;
 }
-const { title, subtitle, pages, pdf, slug, level, excerpt, variant = "list" } = Astro.props;
+const { title, subtitle, pages, pdf, slug, level, excerpt, variant = "list", index } = Astro.props;
+const isFeature = variant === "feature";
+const roman = ["I","II","III","IV","V","VI","VII","VIII","IX","X"];
+const num = typeof index === "number" ? roman[index] ?? String(index + 1) : null;
 ---
-<article class={`group relative ${variant === "feature" ? "bg-cream-soft/60 border-coffee/12" : "bg-cream-soft/40 border-coffee/10 hover:border-coffee/25"} border rounded-2xl p-7 sm:p-8 transition-colors`}>
-  <div class="flex items-center justify-between mb-4">
-    <span class="label text-kraft">{level}</span>
-    <span class="label text-coffee/45">{pages} pp</span>
+<article class={`card-quiet group ${isFeature ? "p-10 sm:p-14" : "p-9 sm:p-11"}`}>
+  <div class="flex items-start justify-between gap-4 mb-6 pb-5 border-b border-espresso/10">
+    <div class="flex items-baseline gap-5">
+      {num && <span class="numeral text-sage text-2xl leading-none">{num}</span>}
+      <span class="label-wide text-espresso/55">{level}</span>
+    </div>
+    <span class="label-wide text-espresso/45">{pages} pp · pdf</span>
   </div>
-  <h3 class="display text-3xl sm:text-4xl text-coffee mb-3 leading-[1.05]">
-    <a href={`/guides/${slug}/`} class="hover:text-kraft transition-colors">{title}</a>
+
+  <h3 class={`display text-espresso leading-[1.02] mb-5 ${isFeature ? "text-5xl sm:text-6xl md:text-7xl" : "text-4xl sm:text-5xl"}`}>
+    <a href={`/guides/${slug}/`} class="hover:text-clay-deep transition-colors">{title}</a>
   </h3>
-  <p class="font-serif italic text-coffee/75 mb-5 leading-relaxed">{subtitle}</p>
-  {excerpt && variant === "feature" && (
-    <p class="font-serif text-coffee/85 mb-6 leading-relaxed text-[1.0625rem]">{excerpt}</p>
+
+  <p class={`font-serif italic font-light text-espresso/70 leading-snug mb-7 ${isFeature ? "text-xl sm:text-2xl max-w-2xl" : "text-lg sm:text-xl"}`}>
+    {subtitle}
+  </p>
+
+  {excerpt && isFeature && (
+    <p class="font-serif text-espresso/85 mb-9 leading-relaxed text-lg max-w-2xl">
+      {excerpt}
+    </p>
   )}
-  <div class="flex flex-wrap gap-3">
-    <a href={pdf} download class="btn-coffee">
-      Download free
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+
+  <div class="flex flex-wrap items-center gap-6">
+    <a href={pdf} download class="btn-outline">
+      Download · free PDF
+      <svg width="12" height="12" aria-hidden="true"><use href="#arrow-down"/></svg>
     </a>
-    <a href={`/guides/${slug}/`} class="btn-outline">Read about it</a>
+    <a href={`/guides/${slug}/`} class="link-quiet">Read about it</a>
   </div>
 </article>

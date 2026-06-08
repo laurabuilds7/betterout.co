@@ -8,19 +8,26 @@ const guides = (await getCollection("guides")).sort(
 );
 const total = guides.reduce((n, g) => n + g.data.pages, 0);
 ---
-<Base title="The Library" description="Five free guides from Laura, founder of Better Out Co. — on steady energy, herbs as medicine, low-tox living, nourishing children, and deep healing.">
-  <section class="max-w-4xl mx-auto px-5 sm:px-8 pt-16 sm:pt-24 pb-10">
-    <div class="label text-kraft mb-4">The library — free, always</div>
-    <h1 class="display text-5xl sm:text-6xl text-coffee leading-[1.02] mb-7">
-      Five little guides.
-    </h1>
-    <p class="prose-body italic text-coffee/80 max-w-2xl">
-      {total} pages of plain-language wellness — anti-hype, anti-overwhelm. Written from a kitchen in Cape Town. Start anywhere; most people begin with Steady.
-    </p>
+<Base title="The Library" description="Five complimentary guides from Laura, founder of Better Out Co. — on steady energy, herbs as medicine, low-tox living, nourishing children, and deep healing.">
+
+  <section class="relative">
+    <div class="max-w-5xl mx-auto px-6 sm:px-10 pt-24 sm:pt-32 pb-16 text-center">
+      <div class="label-wide text-espresso/55 mb-10">The Library — complimentary, always</div>
+      <h1 class="display text-espresso leading-[1.02] text-[2.85rem] sm:text-7xl md:text-[6rem]">
+        Five quiet<br/>
+        <span class="display-italic text-clay">guides.</span>
+      </h1>
+      <p class="mt-12 lede max-w-2xl mx-auto">
+        {total} pages of plain-language wellness — anti-hype, anti-overwhelm. Written from a kitchen in Cape Town. Begin anywhere; most begin with <a href="/guides/steady/" class="underline decoration-clay/50 underline-offset-[6px] hover:text-clay-deep transition-colors">Steady</a>.
+      </p>
+      <div class="rule-centre text-espresso/30 mt-14">
+        <svg width="120" height="8" aria-hidden="true"><use href="#diamond-ornament"/></svg>
+      </div>
+    </div>
   </section>
 
-  <section class="max-w-5xl mx-auto px-5 sm:px-8 pb-20 space-y-5">
-    {guides.map((g) => (
+  <section class="max-w-5xl mx-auto px-6 sm:px-10 py-16 sm:py-20 space-y-6">
+    {guides.map((g, i) => (
       <GuideCard
         title={g.data.title}
         subtitle={g.data.subtitle}
@@ -30,6 +37,7 @@ const total = guides.reduce((n, g) => n + g.data.pages, 0);
         level={g.data.level}
         excerpt={g.data.excerpt}
         variant="feature"
+        index={i}
       />
     ))}
   </section>
