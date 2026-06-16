@@ -13,7 +13,6 @@ export const guides = [
       "Your exact step-by-step ritual — from first setup to finishing calm.",
     eyebrow: "THE METHOD",
     tone: "brown",
-    placeholder: true, // no source PDF yet — cover-only output
   },
   {
     slug: "kitchen-apothecary",
