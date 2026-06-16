@@ -11,7 +11,8 @@ const guides = defineCollection({
     pdf: z.string(),
     excerpt: z.string(),
     order: z.number(),
-    level: z.enum(["start here", "core", "advanced"]),
+    level: z.enum(["start here", "core", "advanced", "the method"]),
+    comingSoon: z.boolean().optional(),
   }),
 });
 

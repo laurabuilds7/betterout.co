@@ -11,7 +11,7 @@ interface Props {
 
 const {
   title = "Better Out Co.",
-  description = "The first mould-free, lab-tested coffee enema in South Africa, and a quiet library of guides on eating well, lightening your load, and healing at the root.",
+  description = "The first mould-free, lab-tested coffee enema in South Africa. A bold, clean ritual for energy, vitality and living well from the inside out.",
   noindex = false,
 } = Astro.props;
 
@@ -24,13 +24,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light" />
-  <meta name="theme-color" content="#F4EFE4" />
+  <meta name="theme-color" content="#3C2B1D" />
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
   {noindex && <meta name="robots" content="noindex, nofollow" />}
   <link rel="canonical" href={canonical} />
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F4EFE4'/%3E%3Ctext y='22' x='16' font-size='17' font-family='Cormorant,Georgia,serif' font-weight='300' font-style='italic' fill='%23221A12' text-anchor='middle'%3Eb%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%233C2B1D'/%3E%3Ctext y='23' x='16' font-size='20' font-family='Georgia,serif' font-style='italic' fill='%2384956F' text-anchor='middle'%3Eb%3C/text%3E%3C/svg%3E" />
 
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
@@ -40,7 +40,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body class="min-h-screen flex flex-col">
   <!-- shared SVG defs: a single thin botanical sprig -->
@@ -60,7 +60,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
       <symbol id="diamond-ornament" viewBox="0 0 120 8">
         <line x1="0" y1="4" x2="55" y2="4" stroke="currentColor" stroke-width="0.6"/>
         <line x1="65" y1="4" x2="120" y2="4" stroke="currentColor" stroke-width="0.6"/>
-        <rect x="57" y="1" width="6" height="6" transform="rotate(45 60 4)" fill="#6E8278"/>
+        <rect x="57" y="1" width="6" height="6" transform="rotate(45 60 4)" fill="#84956F"/>
       </symbol>
       <symbol id="arrow-down" viewBox="0 0 24 24">
         <path d="M12 3 V20 M5 13 L12 20 L19 13" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
@@ -76,5 +76,46 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
     <slot />
   </main>
   <Footer />
+
+  <!-- Soft Instagram nudge — appears after a guide download starts. Not a gate. -->
+  <aside id="ig-nudge" class="ig-nudge" hidden role="status" aria-live="polite">
+    <button type="button" class="ig-nudge__close" aria-label="Dismiss" data-ig-close>&times;</button>
+    <div class="label-wide text-matcha mb-2">Your guide is downloading</div>
+    <p class="font-serif italic text-espresso/75 text-base leading-snug mb-5">
+      Follow along on Instagram for new rituals, recipes and quiet notes.
+    </p>
+    <a href="https://www.instagram.com/better.out.co" target="_blank" rel="noopener" class="btn-bright ig-nudge__cta">
+      Follow @better.out.co
+    </a>
+  </aside>
+
+  <script is:inline>
+    (function () {
+      var nudge = document.getElementById("ig-nudge");
+      if (!nudge) return;
+      var hideTimer = null;
+
+      function show() {
+        nudge.hidden = false;
+        requestAnimationFrame(function () { nudge.classList.add("is-visible"); });
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(hide, 14000);
+      }
+      function hide() {
+        nudge.classList.remove("is-visible");
+        setTimeout(function () { nudge.hidden = true; }, 320);
+        if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+      }
+
+      // Don't intercept the download — just show the nudge shortly after the click.
+      document.addEventListener("click", function (e) {
+        if (!e.target.closest("[data-guide-download]")) return;
+        setTimeout(show, 400);
+      });
+      nudge.querySelectorAll("[data-ig-close]").forEach(function (b) {
+        b.addEventListener("click", hide);
+      });
+    })();
+  </script>
 </body>
 </html>

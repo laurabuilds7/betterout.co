@@ -1,40 +1,59 @@
 @import "tailwindcss";
 
 @theme {
-  /* refined warm neutral palette — bone, linen, sand, clay, espresso */
-  --color-bone:      #F4EFE4;
-  --color-bone-soft: #EDE7D7;
-  --color-linen:     #E5DDC9;
-  --color-sand:      #D4C8AE;
-  --color-stone:     #8C8071;
-  --color-clay:      #A87A55;
-  --color-clay-deep: #7E5536;
-  --color-sage:      #6E8278;
-  --color-sage-deep: #4D5D55;
-  --color-sage-soft: #94A398;
-  --color-espresso:  #221A12;
-  --color-espresso-soft: #3A2D22;
-  --color-ink:       #2A211A;
+  /* ───────── Better Out Co. palette: chocolate · sand · sage ───────── */
 
-  /* legacy aliases (kept so older class names don't break) */
-  --color-cream:      #F4EFE4;
-  --color-cream-soft: #EDE7D7;
-  --color-cream-deep: #E5DDC9;
-  --color-paper:      #F8F3E7;
-  --color-coffee:     #221A12;
-  --color-coffee-soft:#3A2D22;
-  --color-coffee-deep:#160F09;
-  --color-kraft:      #A87A55;
-  --color-kraft-soft: #B58A68;
-  --color-kraft-deep: #7E5536;
+  /* BRIGHT airy base — not warm beige. sand kept only as a small accent. */
+  --color-cream:      #FBFAF6;  /* bright, airy near-white base */
+  --color-cream-soft: #F3F2EC;  /* very light section/card tint */
+  --color-sand:       #D9C7A2;  /* sand — accent only, used sparingly */
+  --color-sand-soft:  #E8DCC2;  /* sand accent, light */
+  --color-stone:      #8C8071;
 
-  --font-display: "Cormorant Garamond", "Cormorant", "Iowan Old Style", Georgia, serif;
-  --font-serif:   "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  /* chocolate brown — the dark, the text, the depth */
+  --color-cocoa:      #3C2B1D;  /* deep chocolate: text + dark sections */
+  --color-cocoa-soft: #57422F;
+  --color-cocoa-deep: #2A1D13;
+
+  /* sage green — the brand green + the tasteful pop */
+  --color-sage:       #84956F;  /* primary sage */
+  --color-sage-deep:  #62734B;  /* sage on light, hover */
+  --color-sage-soft:  #A3B189;
+  --color-sage-pop:   #93A86B;  /* the slightly fresher pop, used small */
+
+  /* warm secondary */
+  --color-clay:       #A87A55;
+  --color-clay-deep:  #7E5536;
+
+  /* ── aliases so existing markup keeps working ── */
+  --color-bone:       #FBFAF6;
+  --color-bone-soft:  #F3F2EC;
+  --color-linen:      #E8DCC2;
+  --color-espresso:   #3C2B1D;
+  --color-espresso-soft: #57422F;
+  --color-ink:        #3C2B1D;
+  --color-forest:      #3C2B1D;   /* dark sections now chocolate, not black */
+  --color-forest-soft: #57422F;
+  --color-matcha:      #62734B;   /* sage for accents/links */
+  --color-matcha-deep: #4E5C3C;
+  --color-bright:      #84956F;   /* the pop is sage now, not neon */
+  --color-bright-deep: #62734B;
+  --color-paper:       #FFFFFF;
+  --color-coffee:      #3C2B1D;
+  --color-coffee-soft: #57422F;
+  --color-coffee-deep: #2A1D13;
+  --color-kraft:       #84956F;
+  --color-kraft-soft:  #A3B189;
+  --color-kraft-deep:  #62734B;
+
+  /* ───────── type ───────── */
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-serif:   "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   --font-sans:    "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 
-  --tracking-display: -0.005em;
-  --tracking-label:   0.32em;
-  --tracking-wide:    0.42em;
+  --tracking-display: -0.012em;
+  --tracking-label:   0.24em;
+  --tracking-wide:    0.32em;
 }
 
 /* ---------- base ---------- */
@@ -44,97 +63,97 @@ html {
 }
 
 body {
-  background-color: var(--color-bone);
-  color: var(--color-espresso);
-  font-family: var(--font-serif);
+  background-color: var(--color-cream);
+  color: var(--color-cocoa);
+  font-family: var(--font-sans);
   font-weight: 400;
-  font-feature-settings: "kern", "liga", "onum";
+  font-feature-settings: "kern", "liga";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   -webkit-tap-highlight-color: transparent;
-  letter-spacing: 0.005em;
 }
 
-::selection { background: var(--color-espresso); color: var(--color-bone); }
+::selection { background: var(--color-sage); color: var(--color-cream); }
 
 /* ---------- type primitives ---------- */
 .label {
   font-family: var(--font-sans);
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
-  font-size: 0.66rem;
+  font-size: 0.68rem;
 }
 
 .label-wide {
   font-family: var(--font-sans);
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  font-size: 0.62rem;
+  font-size: 0.64rem;
 }
 
 .display {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 500;
   letter-spacing: var(--tracking-display);
-  line-height: 1;
+  line-height: 1.02;
 }
 
 .display-italic {
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 300;
+  font-weight: 500;
+  letter-spacing: var(--tracking-display);
 }
 
 .numeral {
   font-family: var(--font-display);
+  font-weight: 500;
   font-style: italic;
-  font-weight: 300;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
 }
 
 .prose-body {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-weight: 400;
-  font-size: 1.125rem;
-  line-height: 1.65;
+  font-size: 1.075rem;
+  line-height: 1.7;
 }
 @media (min-width: 768px) {
-  .prose-body { font-size: 1.1875rem; line-height: 1.7; }
+  .prose-body { font-size: 1.125rem; line-height: 1.75; }
 }
 
 .lede {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 300;
-  font-size: 1.35rem;
-  line-height: 1.55;
-  color: color-mix(in srgb, var(--color-espresso) 80%, transparent);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--color-cocoa) 82%, transparent);
 }
 @media (min-width: 768px) {
-  .lede { font-size: 1.55rem; }
+  .lede { font-size: 1.5rem; }
 }
 
 .pull-quote {
   font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 300;
-  font-size: clamp(1.85rem, 3.2vw, 2.6rem);
-  line-height: 1.2;
-  color: var(--color-espresso);
-  letter-spacing: -0.005em;
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(1.9rem, 3.4vw, 2.8rem);
+  line-height: 1.18;
+  color: var(--color-cocoa);
+  letter-spacing: -0.012em;
 }
 
 /* ---------- dividers ---------- */
 .hairline {
-  border-top: 1px solid color-mix(in srgb, var(--color-espresso) 14%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--color-cocoa) 14%, transparent);
 }
 
 .rule-fine {
   height: 1px;
-  background: color-mix(in srgb, var(--color-espresso) 18%, transparent);
+  background: color-mix(in srgb, var(--color-cocoa) 18%, transparent);
 }
 
 .rule-centre {
@@ -142,193 +161,296 @@ body {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  color: color-mix(in srgb, var(--color-espresso) 32%, transparent);
+  color: color-mix(in srgb, var(--color-sage) 75%, transparent);
 }
 .rule-centre::before,
 .rule-centre::after {
   content: "";
   width: 3rem;
   height: 1px;
-  background: color-mix(in srgb, var(--color-espresso) 22%, transparent);
+  background: color-mix(in srgb, var(--color-sage) 55%, transparent);
 }
 
-/* tiny diamond ornament — the small sage pop */
+/* tiny diamond ornament — sage */
 .diamond {
   display: inline-block;
   width: 5px;
   height: 5px;
   background: var(--color-sage);
   transform: rotate(45deg);
-  opacity: 0.85;
 }
 
-/* ---------- buttons (thin, restrained) ---------- */
+/* ---------- buttons (refined, square-ish) ---------- */
 .btn-espresso {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  background: var(--color-espresso);
-  color: var(--color-bone);
+  background: var(--color-cocoa);
+  color: var(--color-cream);
   font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 0.72rem;
-  letter-spacing: 0.28em;
+  font-weight: 600;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding: 1.05rem 1.85rem;
-  border-radius: 0;
-  border: 1px solid var(--color-espresso);
+  padding: 1.05rem 1.9rem;
+  border-radius: 3px;
+  border: 1px solid var(--color-cocoa);
   transition: background 0.3s ease, color 0.3s ease;
   text-decoration: none;
 }
-.btn-espresso:hover { background: transparent; color: var(--color-espresso); }
+.btn-espresso:hover { background: transparent; color: var(--color-cocoa); }
+
+/* sage accent button */
+.btn-bright {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--color-sage);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 1.05rem 1.9rem;
+  border-radius: 3px;
+  border: 1px solid var(--color-sage);
+  transition: background 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+}
+.btn-bright:hover { background: var(--color-sage-deep); border-color: var(--color-sage-deep); }
+
+.btn-forest {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--color-cocoa);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 1.05rem 1.9rem;
+  border-radius: 3px;
+  border: 1px solid var(--color-cocoa);
+  transition: background 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+}
+.btn-forest:hover { background: var(--color-sage); border-color: var(--color-sage); color: var(--color-cream); }
 
 .btn-bone {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  background: var(--color-bone);
-  color: var(--color-espresso);
+  background: var(--color-cream);
+  color: var(--color-cocoa);
   font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 0.72rem;
-  letter-spacing: 0.28em;
+  font-weight: 600;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding: 1.05rem 1.85rem;
-  border-radius: 0;
-  border: 1px solid var(--color-bone);
+  padding: 1.05rem 1.9rem;
+  border-radius: 3px;
+  border: 1px solid var(--color-cream);
   transition: background 0.3s ease, color 0.3s ease;
   text-decoration: none;
 }
-.btn-bone:hover { background: transparent; color: var(--color-bone); border-color: var(--color-bone); }
+.btn-bone:hover { background: transparent; color: var(--color-cream); border-color: var(--color-cream); }
 
 .btn-outline {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
   background: transparent;
-  color: var(--color-espresso);
+  color: var(--color-cocoa);
   font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 0.72rem;
-  letter-spacing: 0.28em;
+  font-weight: 600;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding: 1.05rem 1.85rem;
-  border-radius: 0;
-  border: 1px solid color-mix(in srgb, var(--color-espresso) 50%, transparent);
+  padding: 1.05rem 1.9rem;
+  border-radius: 3px;
+  border: 1px solid color-mix(in srgb, var(--color-cocoa) 45%, transparent);
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   text-decoration: none;
 }
-.btn-outline:hover { background: var(--color-espresso); color: var(--color-bone); border-color: var(--color-espresso); }
+.btn-outline:hover { background: var(--color-cocoa); color: var(--color-cream); border-color: var(--color-cocoa); }
 
 .btn-outline-cream {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
   background: transparent;
-  color: var(--color-bone);
+  color: var(--color-cream);
   font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 0.72rem;
-  letter-spacing: 0.28em;
+  font-weight: 600;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding: 1.05rem 1.85rem;
-  border-radius: 0;
-  border: 1px solid color-mix(in srgb, var(--color-bone) 60%, transparent);
+  padding: 1.05rem 1.9rem;
+  border-radius: 3px;
+  border: 1px solid color-mix(in srgb, var(--color-cream) 55%, transparent);
   transition: background 0.3s ease, color 0.3s ease;
   text-decoration: none;
 }
-.btn-outline-cream:hover { background: var(--color-bone); color: var(--color-espresso); }
+.btn-outline-cream:hover { background: var(--color-cream); color: var(--color-cocoa); }
 
 .link-quiet {
   font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 0.72rem;
-  letter-spacing: 0.28em;
+  font-weight: 600;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-espresso);
+  color: var(--color-sage-deep);
   text-decoration: none;
   position: relative;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
 }
 .link-quiet::after {
   content: "";
   position: absolute;
-  left: 0; right: 30%;
+  left: 0; right: 35%;
   bottom: 0;
   height: 1px;
-  background: color-mix(in srgb, var(--color-espresso) 55%, transparent);
-  transition: right 0.35s ease;
+  background: var(--color-sage);
+  transition: right 0.3s ease;
 }
 .link-quiet:hover::after { right: 0; }
 
 /* ---------- cards ---------- */
 .card-quiet {
   position: relative;
-  background: var(--color-bone-soft);
-  border: 1px solid color-mix(in srgb, var(--color-espresso) 9%, transparent);
-  border-radius: 0;
-  transition: border-color 0.4s ease, background 0.4s ease, transform 0.4s ease;
+  background: var(--color-cream-soft);
+  border: 1px solid color-mix(in srgb, var(--color-cocoa) 10%, transparent);
+  border-radius: 6px;
+  transition: border-color 0.35s ease, background 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
 }
 .card-quiet:hover {
-  border-color: color-mix(in srgb, var(--color-espresso) 22%, transparent);
-  background: var(--color-linen);
+  border-color: color-mix(in srgb, var(--color-sage) 60%, transparent);
+  background: color-mix(in srgb, var(--color-sage) 9%, var(--color-cream));
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -26px color-mix(in srgb, var(--color-cocoa) 45%, transparent);
 }
+
+/* ---------- guide cards: soft, rounded, varied tones, hover shade-shift ---------- */
+.guide-card {
+  position: relative;
+  border-radius: 24px;
+  border: 1px solid color-mix(in srgb, var(--color-cocoa) 8%, transparent);
+  transition: background 0.4s ease, border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+}
+.guide-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 46px -28px color-mix(in srgb, var(--color-cocoa) 45%, transparent);
+}
+
+/* Pinterest earthy palette — sage & moss greens, sand & nude browns. No grey, no black. */
+
+/* soft dusty sage (light, dark text) */
+.tone-sagelight { background: #D8DEC9; border-color: color-mix(in srgb, #7C8A5C 20%, transparent); }
+.tone-sagelight:hover { background: #CDD5BB; border-color: color-mix(in srgb, #7C8A5C 40%, transparent); }
+/* dusty sage (light, dark text) */
+.tone-sage { background: #BAC4A4; border-color: color-mix(in srgb, #7C8A5C 28%, transparent); }
+.tone-sage:hover { background: #AEBA95; }
+/* deep moss (dark card, cream text) */
+.tone-moss { background: #7C8A5C; border-color: transparent; }
+.tone-moss:hover { background: #6B784D; }
+/* warm sand (light, dark text) */
+.tone-sand { background: #E6DAC1; border-color: color-mix(in srgb, #C2A079 35%, transparent); }
+.tone-sand:hover { background: #DDCDAC; }
+/* nude brown (light, dark text) */
+.tone-nude { background: #D2B79C; border-color: color-mix(in srgb, #8B6B4F 30%, transparent); }
+.tone-nude:hover { background: #C7A98B; }
+/* coffee brown (dark card, cream text — warm, NOT black) */
+.tone-brown { background: #8C6A4D; border-color: transparent; }
+.tone-brown:hover { background: #7A5B41; }
 
 /* ---------- prose for guide pages ---------- */
 .prose-guide p {
   margin-block: 1.15em;
-  font-size: 1.125rem;
+  font-size: 1.075rem;
   line-height: 1.75;
 }
 @media (min-width: 768px) {
-  .prose-guide p { font-size: 1.1875rem; }
+  .prose-guide p { font-size: 1.125rem; }
 }
 .prose-guide h2 {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 500;
   font-size: 2rem;
-  line-height: 1.15;
-  letter-spacing: -0.005em;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
   margin-block: 2.4em 0.6em;
-  color: var(--color-espresso);
+  color: var(--color-cocoa);
 }
 .prose-guide h3 {
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 300;
+  font-weight: 500;
   font-size: 1.4rem;
   line-height: 1.2;
   margin-block: 2em 0.5em;
-  color: var(--color-espresso);
+  color: var(--color-cocoa);
 }
 .prose-guide a {
-  color: var(--color-clay-deep);
+  color: var(--color-sage-deep);
   text-decoration: underline;
   text-underline-offset: 4px;
-  text-decoration-color: color-mix(in srgb, var(--color-clay) 45%, transparent);
+  text-decoration-color: color-mix(in srgb, var(--color-sage) 60%, transparent);
   text-decoration-thickness: 1px;
 }
-.prose-guide a:hover { color: var(--color-espresso); }
+.prose-guide a:hover { color: var(--color-cocoa); }
 .prose-guide blockquote {
-  border-left: 1px solid var(--color-clay);
+  border-left: 2px solid var(--color-sage);
   padding-left: 1.4rem;
   margin-block: 1.6em;
   font-style: italic;
-  font-weight: 300;
-  font-size: 1.25rem;
-  color: color-mix(in srgb, var(--color-espresso) 88%, transparent);
+  font-weight: 400;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: color-mix(in srgb, var(--color-cocoa) 90%, transparent);
 }
 
 /* gentle fade-in for hero */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(9px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.fade-up { animation: fadeUp 1s ease forwards; }
-.fade-up-2 { animation: fadeUp 1s ease 0.15s forwards; opacity: 0; }
-.fade-up-3 { animation: fadeUp 1s ease 0.30s forwards; opacity: 0; }
-.fade-up-4 { animation: fadeUp 1s ease 0.45s forwards; opacity: 0; }
+.fade-up { animation: fadeUp 0.9s ease forwards; }
+.fade-up-2 { animation: fadeUp 0.9s ease 0.12s forwards; opacity: 0; }
+.fade-up-3 { animation: fadeUp 0.9s ease 0.24s forwards; opacity: 0; }
+.fade-up-4 { animation: fadeUp 0.9s ease 0.36s forwards; opacity: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   .fade-up, .fade-up-2, .fade-up-3, .fade-up-4 { animation: none; opacity: 1; transform: none; }
+}
+
+/* ---------- post-download Instagram nudge ---------- */
+.ig-nudge {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  max-width: 22rem;
+  width: calc(100% - 3rem);
+  background: var(--color-cream);
+  color: var(--color-cocoa);
+  border-radius: 18px;
+  padding: 1.6rem 1.6rem 1.6rem;
+  box-shadow: 0 24px 60px -24px rgba(34, 26, 18, 0.35);
+  z-index: 60;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.32s ease, transform 0.32s ease;
+}
+.ig-nudge.is-visible { opacity: 1; transform: translateY(0); }
+.ig-nudge__close {
+  position: absolute; top: 0.55rem; right: 0.8rem;
+  background: none; border: none; font-size: 1.4rem; line-height: 1;
+  color: color-mix(in srgb, var(--color-cocoa) 45%, transparent); cursor: pointer;
+}
+.ig-nudge__close:hover { color: var(--color-cocoa); }
+.ig-nudge__cta { width: 100%; justify-content: center; border-radius: 10px; }
+@media (max-width: 480px) {
+  .ig-nudge { bottom: 1rem; right: 1rem; left: 1rem; max-width: none; width: auto; }
 }

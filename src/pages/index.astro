@@ -6,69 +6,71 @@ import GuideCard from "../components/GuideCard.astro";
 const guides = (await getCollection("guides")).sort(
   (a, b) => a.data.order - b.data.order
 );
-const featured = guides.find((g) => g.data.slug === "steady")!;
-const rest = guides.filter((g) => g.data.slug !== "steady");
 const totalPages = guides.reduce((n, g) => n + g.data.pages, 0);
+
+// Pinterest earthy palette — sage & moss greens, sand & nude browns
+const toneBySlug: Record<string, "sagelight" | "sage" | "moss" | "sand" | "nude" | "brown"> = {
+  "the-method": "brown",            // coffee brown — the flagship how-to
+  "kitchen-apothecary": "moss",     // deep moss green — the herb one
+  "low-tox-living": "sage",         // dusty sage
+  "steady": "sand",                 // warm sand
+  "nourished-littles": "sagelight", // soft sage
+  "roots": "nude",                  // nude brown
+};
 ---
 <Base>
 
   <!-- ───────── HERO ───────── -->
-  <section class="relative">
-    <div class="max-w-5xl mx-auto px-6 sm:px-10 pt-24 sm:pt-32 pb-24 sm:pb-36 text-center">
-      <div class="label-wide text-espresso/55 mb-10 fade-up">
-        A quiet ritual · Cape Town
+  <section class="relative overflow-hidden" style="background-color:#EDF1E6;">
+    <div class="max-w-5xl mx-auto px-6 sm:px-10 pt-24 sm:pt-28 pb-20 sm:pb-28 text-center">
+      <div class="label-wide text-matcha mb-8 fade-up">
+        Mould-free · Lab-tested · Cape Town
       </div>
 
-      <h1 class="display text-espresso leading-[1.02] text-[2.85rem] sm:text-7xl md:text-[6.2rem] tracking-tight fade-up-2">
+      <h1 class="display text-cocoa text-[3.4rem] sm:text-7xl md:text-[6.5rem] fade-up-2">
         Better out<br/>
-        <span class="display-italic text-clay">than in.</span>
+        <span class="display-italic text-sage">than in.</span>
       </h1>
 
-      <p class="mt-12 lede max-w-2xl mx-auto fade-up-3">
-        The first mould-free, lab-tested coffee enema in South Africa.
-        A liver-loving ritual for the well, and a quiet library of guides on living from the inside out.
+      <p class="mt-10 lede max-w-2xl mx-auto fade-up-3">
+        The first mould-free, lab-tested coffee enema in South Africa —
+        a clean, energising ritual for people who want to feel <span class="text-matcha-deep font-semibold">lighter, clearer and more alive.</span>
       </p>
 
-      <div class="mt-14 flex flex-wrap items-center justify-center gap-7 fade-up-4">
-        <a href="#library" class="btn-espresso">Enter the Library</a>
-        <a href="#ritual" class="link-quiet">The ritual, in brief</a>
-      </div>
-
-      <div class="mt-20 flex items-center justify-center gap-6 fade-up-4">
-        <span class="rule-fine w-12"></span>
-        <span class="label-wide text-espresso/45">Mould-free · Lab-tested · Organic</span>
-        <span class="rule-fine w-12"></span>
+      <div class="mt-12 flex flex-wrap items-center justify-center gap-5 fade-up-4">
+        <a href="#ritual" class="btn-bright">Discover the ritual</a>
+        <a href="https://instagram.com/better.out.co" rel="me noopener" target="_blank" class="link-quiet">Follow @better.out.co</a>
       </div>
     </div>
   </section>
 
-  <!-- ───────── CHAPTER I — RITUAL ───────── -->
-  <section id="ritual" class="relative border-t border-espresso/10 bg-bone-soft/60">
-    <div class="max-w-5xl mx-auto px-6 sm:px-10 py-28 sm:py-36">
-      <div class="text-center mb-20">
-        <span class="numeral text-sage text-xl mr-3">I</span>
-        <span class="label-wide text-espresso/55">The Ritual</span>
+  <!-- ───────── 01 — THE RITUAL ───────── -->
+  <section id="ritual" class="relative border-t border-espresso/10" style="background-color:#F1EBDC;">
+    <div class="max-w-5xl mx-auto px-6 sm:px-10 py-24 sm:py-32">
+      <div class="flex items-center justify-center gap-4 mb-16">
+        <span class="numeral text-matcha text-2xl">01</span>
+        <span class="label-wide text-forest/60">The Ritual</span>
       </div>
 
-      <div class="grid md:grid-cols-12 gap-12 md:gap-20 items-start">
+      <div class="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
         <div class="md:col-span-5">
-          <h2 class="display text-espresso leading-[1.04] text-4xl sm:text-5xl md:text-[3.2rem]">
-            A gentle, <span class="display-italic text-clay-deep">bottom-up</span> flush — kept by the well since the 1920s.
+          <h2 class="display text-forest text-4xl sm:text-5xl md:text-[3.4rem]">
+            A clean, <span class="text-matcha">high-performance</span> reset — the original inner biohack.
           </h2>
         </div>
 
-        <div class="md:col-span-6 md:col-start-7 prose-body text-espresso/85 space-y-6">
+        <div class="md:col-span-6 md:col-start-7 prose-body text-espresso/85 space-y-5">
           <p>
-            Organic, mould-free coffee, brewed gently — not to drink — to support the liver's primary detox pathway. The caffeine is absorbed through the colon wall, signalling the liver to release bile loaded with what doesn't belong.
+            High-potency, mould-free <span class="text-sage-deep font-medium">raw low-roast</span> green coffee — brewed gently and used as a bottom-up flush, not a drink. A simple daily ritual for energy, clarity and feeling lighter.
           </p>
           <p>
-            Quietly kept by biohackers, athletes, and the wellness-led the world over. Not magic, not extreme. Simply one of the oldest tools in integrative wellness, finally made properly in South Africa.
+            Athletes, high performers and the biohacking crowd have leaned on it for years — for clean energy, sharper focus and a lighter body. Nothing extreme, nothing faddy. But until now, it simply didn't exist in South Africa — not clean, not lab-tested, not mould-free. <span class="text-sage-deep font-medium">Now it's finally here.</span>
           </p>
 
-          <ul class="pt-4 space-y-3.5 label-wide text-espresso/60">
-            <li class="flex items-center gap-4"><span class="diamond"></span> Single-origin organic Arabica</li>
+          <ul class="pt-3 space-y-3.5 label text-forest/70">
+            <li class="flex items-center gap-4"><span class="diamond"></span> Single-origin green coffee</li>
+            <li class="flex items-center gap-4"><span class="diamond"></span> Raw · low-roast · high potency</li>
             <li class="flex items-center gap-4"><span class="diamond"></span> Independently lab-tested · mould-free</li>
-            <li class="flex items-center gap-4"><span class="diamond"></span> Medium roast · cleansing brew</li>
             <li class="flex items-center gap-4"><span class="diamond"></span> Made in Cape Town, by hand</li>
           </ul>
         </div>
@@ -77,57 +79,70 @@ const totalPages = guides.reduce((n, g) => n + g.data.pages, 0);
   </section>
 
   <!-- ───────── PULL QUOTE ───────── -->
-  <section class="relative">
-    <div class="max-w-4xl mx-auto px-6 sm:px-10 py-28 sm:py-36 text-center">
-      <div class="rule-centre text-espresso/35 mb-10">
+  <section class="relative border-t border-espresso/10" style="background-color:#BFC8AA;">
+    <div class="max-w-4xl mx-auto px-6 sm:px-10 py-24 sm:py-32 text-center">
+      <div class="rule-centre text-cocoa/30 mb-10">
         <svg width="120" height="8" aria-hidden="true"><use href="#diamond-ornament"/></svg>
       </div>
 
       <blockquote class="pull-quote">
-        The very thing meant to lighten the liver's load was, more often than not, adding to it. So I made the version I wished existed.
+        Tired, foggy, inflamed — we've been told that's just normal. It isn't. So I built the cleanest, most powerful reset I could — the first South Africa has ever had.
       </blockquote>
 
-      <div class="mt-10 label-wide text-espresso/55">
+      <div class="mt-8 label-wide text-matcha">
         Laura Weyel — Founder
       </div>
     </div>
   </section>
 
-  <!-- ───────── CHAPTER II — LIBRARY ───────── -->
-  <section id="library" class="relative border-t border-espresso/10 bg-bone-soft/40">
-    <div class="max-w-6xl mx-auto px-6 sm:px-10 py-28 sm:py-36">
-
-      <div class="text-center mb-16">
-        <span class="numeral text-sage text-xl mr-3">II</span>
-        <span class="label-wide text-espresso/55">The Library — complimentary</span>
+  <!-- ───────── 02 — THE PRODUCT ───────── -->
+  <section class="relative bg-forest text-bone overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 sm:px-10 py-24 sm:py-32 text-center relative">
+      <div class="flex items-center justify-center gap-4 mb-8">
+        <span class="numeral text-bright text-2xl">02</span>
+        <span class="label-wide text-bone/55">The Product</span>
       </div>
 
-      <div class="max-w-3xl mx-auto text-center mb-20">
-        <h2 class="display text-espresso leading-[1.04] text-4xl sm:text-5xl md:text-[3.4rem] mb-8">
-          Five quiet guides on <span class="display-italic text-clay-deep">living well</span> from the inside out.
+      <h2 class="display text-4xl sm:text-6xl md:text-[5rem] mb-5">
+        The coffee.<br/>
+        The kit.<br/>
+        <span class="text-bright">Available now.</span>
+      </h2>
+
+      <p class="lede text-bone/80 max-w-lg mx-auto mb-7">
+        High-potency, mould-free green coffee + a clean, well-made kit. The first South Africa's ever had.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-5">
+        <a href="https://instagram.com/better.out.co" rel="me noopener" target="_blank" class="btn-bone">
+          Order now
+        </a>
+        <a href="https://instagram.com/better.out.co" rel="me noopener" target="_blank" class="link-quiet" style="color: var(--color-bright);">
+          @better.out.co
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── 03 — FREE GUIDES (secondary, at the bottom) ───────── -->
+  <section id="guides" class="relative border-t border-espresso/10">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 py-24 sm:py-32">
+
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <div class="flex items-center justify-center gap-4 mb-7">
+          <span class="numeral text-matcha text-2xl">03</span>
+          <span class="label-wide text-forest/60">Free Guides</span>
+        </div>
+        <h2 class="display text-forest text-4xl sm:text-5xl md:text-[3.4rem] mb-6">
+          Better <span class="text-matcha">starts now.</span>
         </h2>
         <p class="lede">
-          {totalPages} pages of plain-language, anti-hype wellness — written by hand from a kitchen in Cape Town. Begin anywhere; most readers begin with <a href="/guides/steady/" class="underline decoration-clay/50 underline-offset-[6px] hover:text-clay-deep transition-colors">Steady</a>.
+          12+ years as a nutritionist — and everything I know is in these pages. Steady energy, food as medicine, a lighter toxic load, thriving kids, healing at the root. <span class="text-matcha-deep font-medium">{totalPages}+ pages, completely free.</span> Pick one and feel the difference.
         </p>
       </div>
 
-      <!-- Featured -->
-      <div class="mb-6">
-        <GuideCard
-          title={featured.data.title}
-          subtitle={featured.data.subtitle}
-          pages={featured.data.pages}
-          pdf={featured.data.pdf}
-          slug={featured.data.slug}
-          level={featured.data.level}
-          excerpt={featured.data.excerpt}
-          variant="feature"
-          index={0}
-        />
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        {rest.map((g, i) => (
+      <div class="columns-1 sm:columns-2 lg:columns-3 gap-5">
+        {guides.map((g) => (
           <GuideCard
             title={g.data.title}
             subtitle={g.data.subtitle}
@@ -135,45 +150,14 @@ const totalPages = guides.reduce((n, g) => n + g.data.pages, 0);
             pdf={g.data.pdf}
             slug={g.data.slug}
             level={g.data.level}
-            index={i + 1}
+            tone={toneBySlug[g.data.slug] ?? "sagelight"}
+            comingSoon={g.data.comingSoon}
           />
         ))}
       </div>
 
-      <div class="mt-16 flex justify-center">
-        <a href="/guides/" class="link-quiet">See the full library</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ───────── CHAPTER III — PRODUCT ───────── -->
-  <section class="relative bg-espresso text-bone overflow-hidden">
-    <svg aria-hidden="true" class="absolute right-[6%] top-16 w-24 h-48 text-bone/15 hidden md:block"><use href="#sprig"/></svg>
-    <svg aria-hidden="true" class="absolute left-[5%] bottom-12 w-20 h-40 text-bone/12 -scale-x-100 hidden md:block"><use href="#sprig"/></svg>
-
-    <div class="max-w-4xl mx-auto px-6 sm:px-10 py-32 sm:py-40 text-center relative">
-      <div class="text-center mb-14">
-        <span class="numeral text-sage text-xl mr-3">III</span>
-        <span class="label-wide text-bone/55">The Product — by appointment</span>
-      </div>
-
-      <h2 class="display text-4xl sm:text-6xl md:text-[5rem] leading-[1.02] mb-10">
-        Coffee in bags.<br/>
-        <span class="display-italic text-clay">The kit.</span><br/>
-        <span class="text-bone/70">Late 2026.</span>
-      </h2>
-
-      <p class="lede text-bone/80 max-w-2xl mx-auto mb-14">
-        Lab-tested, guaranteed mould-free organic coffee, paired with a clean, well-made enema kit. The first of its kind in South Africa. To be among the first to know — write to us on Instagram.
-      </p>
-
-      <div class="flex flex-wrap items-center justify-center gap-7">
-        <a href="https://instagram.com/better.out.co" rel="me noopener" target="_blank" class="btn-bone">
-          @better.out.co
-        </a>
-        <a href="/about/" class="link-quiet text-bone" style="color: var(--color-bone);">
-          The story
-        </a>
+      <div class="mt-14 flex justify-center">
+        <a href="/guides/" class="link-quiet">See all guides</a>
       </div>
     </div>
   </section>

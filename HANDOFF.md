@@ -8,6 +8,41 @@ This document is the single source of truth for where this work is right now. If
 
 ---
 
+## ⭐ Session update — 2026-06-16 (desktop app, with Laura)
+
+A large visual + content overhaul of the **home page and guides** happened this session. Everything is **saved on disk but UNCOMMITTED** — Laura wants to commit + push (go live) herself from the terminal. `npm run build` is clean (11 pages).
+
+### What changed (uncommitted in working tree)
+- **`src/styles/global.css`** — locked palette: bright near-white base `#FBFAF6`, chocolate `#3C2B1D`, sage `#84956F`. Font is now **Fraunces** (display) + **Inter** (body) — replaced the rejected Cormorant. Pinterest "earthy" guide-card tones: `sagelight / sage / moss / sand / nude / brown` with hover shade-shift. Email-capture modal styles.
+- **`src/pages/index.astro`** — product/ritual lead, **Free Guides moved to the bottom**; product is **"Available now"** with Order buttons (→ Instagram); biohack-voice ritual copy; new founder quote; value-driven guides intro ("12+ years as a nutritionist…"); section colour rhythm (soft-sage hero, sand ritual, sage quote band, chocolate product, white guides).
+- **`src/components/GuideCard.astro`** + **`src/pages/guides/index.astro`** — masonry layout, earthy tones, `comingSoon` support.
+- **New placeholder guide** `src/content/guides/the-method.md` — "The Coffee Enema Method", `comingSoon: true`, order 0. Schema (`src/content.config.ts`) extended with `comingSoon` + `"the method"` level. **Content + PDF still to be written by Laura.**
+- **`src/components/Header.astro`** — wordmark "BETTER OUT CO." (matches packaging), nav renamed **"Free Guides"**, persistent **Order** button.
+- **Email capture** — modal in `src/layouts/Base.astro` gates every guide PDF download (asks email + consent, then downloads). Starter privacy page `src/pages/privacy.astro`.
+
+### Brand truth (confirmed this session)
+Palette = **chocolate brown · sand · sage** (NOT neon/black). Site/IG must be **BRIGHT, not beige**. Bold colour belongs in **small** moments (cards, accents, the sage quote band) — a full dark-moss section was tried and **rejected as "lost its classiness."** Packaging = "High Potency **GREEN (raw, low-roast)** Coffee — not for drinking, high-performance inner flow." Product sells **now** (coffee + kit + bag) in Cape Town shops.
+
+### ⚠️ Go-live checklist — REVIEW WITH LAURA BEFORE PUSHING
+1. **Email capture is NOT wired** — `FORM_ENDPOINT` in `src/layouts/Base.astro` is empty, so signups are **not saved**. Laura is choosing a provider (Kit / Mailchimp / Formspree). Either wire it first, or launch knowing emails aren't captured yet.
+2. **Privacy page has `[placeholders]`** (`src/pages/privacy.astro`) — contact email + provider. POPIA: get wording reviewed.
+3. **CIPC reg number** still `[pending]`/TODO in `src/components/Footer.astro` — needed before commercial trading.
+4. **Custom domain** `betterout.co` still pending DNS (see Porkbun section below). Pushing deploys to the github.io URL; the custom domain needs the DNS records + `gh api pages cname`.
+5. **Compliance voice** — wellness language only, no medical/cancer claims. Keep it that way.
+
+### To go live (static site → GitHub Pages, from `main`)
+```bash
+cd ~/Projects/betterout.co
+git status                  # review the change set above
+npm run build               # confirm clean (currently passes)
+git add -A
+git commit -m "design: earthy redesign, product live, free guides + email capture"
+git push                    # GitHub Actions deploys
+gh run list --repo laurabuilds7/betterout.co --limit 3
+```
+
+---
+
 ## Three repos to keep straight
 
 | Path | GitHub | Public? | What it is |

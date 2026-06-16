@@ -6,43 +6,41 @@ interface Props {
   pdf: string;
   slug: string;
   level: string;
-  excerpt?: string;
-  variant?: "list" | "feature";
-  index?: number;
+  tone?: "sagelight" | "sage" | "moss" | "sand" | "nude" | "brown";
+  comingSoon?: boolean;
 }
-const { title, subtitle, pages, pdf, slug, level, excerpt, variant = "list", index } = Astro.props;
-const isFeature = variant === "feature";
-const roman = ["I","II","III","IV","V","VI","VII","VIII","IX","X"];
-const num = typeof index === "number" ? roman[index] ?? String(index + 1) : null;
+const { title, subtitle, pages, pdf, slug, level, tone = "sagelight", comingSoon = false } = Astro.props;
+const dark = tone === "moss" || tone === "brown";
 ---
-<article class={`card-quiet group ${isFeature ? "p-10 sm:p-14" : "p-9 sm:p-11"}`}>
-  <div class="flex items-start justify-between gap-4 mb-6 pb-5 border-b border-espresso/10">
-    <div class="flex items-baseline gap-5">
-      {num && <span class="numeral text-sage text-2xl leading-none">{num}</span>}
-      <span class="label-wide text-espresso/55">{level}</span>
-    </div>
-    <span class="label-wide text-espresso/45">{pages} pp · pdf</span>
+<article class={`guide-card tone-${tone} group p-7 sm:p-8 flex flex-col break-inside-avoid mb-5`}>
+  <div class="flex items-center justify-between gap-4 mb-6">
+    <span class={`label ${dark ? "text-cream/85" : "text-matcha"}`}>{level}</span>
+    <span class={`label-wide text-[0.6rem] ${dark ? "text-cream/45" : "text-forest/40"}`}>
+      {comingSoon ? "Coming soon" : `${pages} pp · pdf`}
+    </span>
   </div>
 
-  <h3 class={`display text-espresso leading-[1.02] mb-5 ${isFeature ? "text-5xl sm:text-6xl md:text-7xl" : "text-4xl sm:text-5xl"}`}>
-    <a href={`/guides/${slug}/`} class="hover:text-clay-deep transition-colors">{title}</a>
+  <h3 class={`display text-3xl sm:text-[2.1rem] leading-[1.0] mb-4 ${dark ? "text-cream" : "text-forest"}`}>
+    <a href={`/guides/${slug}/`} class={`transition-colors ${dark ? "hover:text-cream/80" : "hover:text-matcha"}`}>{title}</a>
   </h3>
 
-  <p class={`font-serif italic font-light text-espresso/70 leading-snug mb-7 ${isFeature ? "text-xl sm:text-2xl max-w-2xl" : "text-lg sm:text-xl"}`}>
+  <p class={`prose-body text-base leading-snug mb-7 ${dark ? "text-cream/85" : "text-espresso/70"}`}>
     {subtitle}
   </p>
 
-  {excerpt && isFeature && (
-    <p class="font-serif text-espresso/85 mb-9 leading-relaxed text-lg max-w-2xl">
-      {excerpt}
-    </p>
-  )}
-
-  <div class="flex flex-wrap items-center gap-6">
-    <a href={pdf} download class="btn-outline">
-      Download · free PDF
-      <svg width="12" height="12" aria-hidden="true"><use href="#arrow-down"/></svg>
-    </a>
-    <a href={`/guides/${slug}/`} class="link-quiet">Read about it</a>
+  <div class="flex flex-wrap items-center gap-4 pt-1">
+    {comingSoon ? (
+      <span class={`text-sm inline-flex items-center gap-2 ${dark ? "text-cream/70" : "text-forest/55"} label`}>
+        Full guide coming soon
+      </span>
+    ) : (
+      <>
+        <a href={pdf} download data-guide-download class={`text-sm ${dark ? "btn-outline-cream" : "btn-outline"}`} style="padding: 0.7rem 1.4rem;">
+          Free PDF
+          <svg width="12" height="12" aria-hidden="true"><use href="#arrow-down"/></svg>
+        </a>
+        <a href={`/guides/${slug}/`} class={dark ? "label text-cream/80 hover:text-cream transition-colors" : "link-quiet"}>Read about it</a>
+      </>
+    )}
   </div>
 </article>

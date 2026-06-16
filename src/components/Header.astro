@@ -1,39 +1,41 @@
 ---
 const links = [
-  { href: "/guides/", label: "The Library" },
-  { href: "/about/", label: "Atelier" },
+  { href: "/guides/", label: "Free Guides" },
+  { href: "/about/", label: "About" },
 ];
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 ---
 <header class="sticky top-0 z-30 backdrop-blur-md bg-bone/85 border-b border-espresso/10">
-  <div class="max-w-7xl mx-auto px-6 sm:px-10 py-5 grid grid-cols-3 items-center gap-6">
-    <div class="hidden sm:block label-wide text-espresso/55">
-      Cape Town · MMXXVI
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 py-4 grid grid-cols-3 items-center gap-6">
+    <div class="hidden sm:block label-wide text-forest/50">
+      Cape Town · 2026
     </div>
 
-    <a href="/" class="text-center text-espresso leading-none col-span-2 sm:col-span-1 sm:text-center sm:mx-auto" aria-label="Better Out Co. — home">
-      <span class="display text-2xl sm:text-[1.65rem] tracking-wider">
-        better<span class="display-italic text-sage">·</span>out
+    <a href="/" class="text-center text-cocoa leading-none col-span-2 sm:col-span-1 sm:mx-auto" aria-label="Better Out Co. — home">
+      <span class="display text-lg sm:text-xl font-medium uppercase" style="letter-spacing: 0.2em;">
+        Better Out Co<span class="text-sage">.</span>
       </span>
-      <div class="label-wide text-espresso/50 mt-1 text-[0.55rem]">Coffee · Cape Town</div>
+      <div class="label-wide text-cocoa/40 mt-1.5 text-[0.5rem]">Green Coffee · Cape Town</div>
     </a>
 
-    <nav class="hidden sm:flex items-center justify-end gap-8">
+    <nav class="hidden sm:flex items-center justify-end gap-7">
       {links.map((l) => {
         const normalized = l.href.replace(/\/$/, "") || "/";
         const active = normalized === pathname || (normalized !== "/" && pathname.startsWith(normalized));
         return (
-          <a href={l.href} class={`label ${active ? "text-espresso" : "text-espresso/55 hover:text-espresso"} transition-colors`}>
+          <a href={l.href} class={`label ${active ? "text-matcha" : "text-forest/60 hover:text-matcha"} transition-colors`}>
             {l.label}
           </a>
         );
       })}
+      <a href="https://instagram.com/better.out.co" rel="me noopener" target="_blank" class="btn-bright" style="padding: 0.6rem 1.15rem; font-size: 0.62rem; letter-spacing: 0.16em;">Order</a>
     </nav>
 
-    <nav class="flex sm:hidden col-span-3 items-center justify-center gap-7 pt-2 -mb-1">
+    <nav class="flex sm:hidden col-span-3 items-center justify-center gap-6 pt-2 -mb-1">
       {links.map((l) => (
-        <a href={l.href} class="label text-espresso/65 hover:text-espresso transition-colors">{l.label}</a>
+        <a href={l.href} class="label text-forest/65 hover:text-matcha transition-colors">{l.label}</a>
       ))}
+      <a href="https://instagram.com/better.out.co" rel="me noopener" target="_blank" class="btn-bright" style="padding: 0.5rem 1rem; font-size: 0.6rem; letter-spacing: 0.16em;">Order</a>
     </nav>
   </div>
 </header>
