@@ -7,13 +7,13 @@ Guidance for Claude Code (and other agents) working in this repo. Humans should 
 - Astro 5 + Tailwind 4 static site. Output is plain HTML/CSS/JS — no server, no runtime.
 - Hosted on **GitHub Pages** from this public repo. Build + deploy via `.github/workflows/deploy.yml` on push to `main`.
 - **LIVE at https://betterout.co** since 2026-06-16 (apex + `www`, HTTPS via Let's Encrypt, auto-renewing). Pinned by `public/CNAME`.
-- Brand source assets (logos, flyer source, marketing scratch) live in a **separate private repo**: `laurabuilds7/better-out-co`. Do not move anything from there into this repo unless explicitly asked — this repo is intentionally site-only.
+- Brand source assets (logos, flyer source, marketing scratch) live in a **separate private repo**: `laurabuilds7/better-out-co-vault`. Do not move anything from there into this repo unless explicitly asked — this repo is intentionally site-only.
 
 ## Sibling repos and shared resources
 
-- `~/Projects/better-out-co/` — private brand-assets repo (`laurabuilds7/better-out-co`). Logos, A4 shelf flyer + generator, internal brand notes.
+- `~/Projects/better-out-co-vault/` — private brand-assets repo (`laurabuilds7/better-out-co-vault`). Logos, A4 shelf flyer + generator, internal brand notes.
 - `~/Projects/calmlybloom-site/` — Laura's other public site (currently offline pending review). Unrelated brand; the `CLAUDE.md` there documents the same Porkbun API patterns.
-- **Porkbun API creds** for DNS work live in `~/Projects/better-out-co/.env` (`PORKBUN_API_KEY`, `PORKBUN_SECRET_KEY`). Shared across Laura's projects. See the Porkbun section in `~/Projects/calmlybloom-site/CLAUDE.md` for the working call pattern, rate limits (1-per-10s on `checkDomain`), and per-domain API-access toggle requirement.
+- **Porkbun API creds** for DNS work live in `~/Projects/better-out-co-vault/.env` (`PORKBUN_API_KEY`, `PORKBUN_SECRET_KEY`). Shared across Laura's projects. See the Porkbun section in `~/Projects/calmlybloom-site/CLAUDE.md` for the working call pattern, rate limits (1-per-10s on `checkDomain`), and per-domain API-access toggle requirement.
 
 ## DNS for this domain
 
@@ -133,4 +133,4 @@ After a deploy, remind Laura that her browser may show the old cached version �
 - Add Shopify, Stripe, Yoco, or other commerce — that's Phase 2 and needs a separate plan.
 - Make the repo private (Pages with a custom domain on a private repo requires GitHub Pro).
 - Push commits that remove the footer disclaimer or weaken its medical/wellness language.
-- Commit anything from the sibling `better-out-co` private repo (brand source assets, internal notes) into this public repo.
+- Commit anything from the sibling `better-out-co-vault` private repo (brand source assets, internal notes) into this public repo.
