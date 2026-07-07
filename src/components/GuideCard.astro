@@ -12,7 +12,7 @@ interface Props {
 const { title, subtitle, pages, pdf, slug, level, tone = "sagelight", comingSoon = false } = Astro.props;
 const dark = tone === "moss" || tone === "brown";
 ---
-<article class={`guide-card tone-${tone} group p-7 sm:p-8 flex flex-col break-inside-avoid mb-5`}>
+<article class={`guide-card tone-${tone} group p-7 sm:p-8 flex flex-col h-full`}>
   <div class="flex items-center justify-between gap-4 mb-6">
     <span class={`label ${dark ? "text-cream/85" : "text-matcha"}`}>{level}</span>
     <span class={`label-wide text-[0.6rem] ${dark ? "text-cream/45" : "text-forest/40"}`}>
@@ -24,11 +24,11 @@ const dark = tone === "moss" || tone === "brown";
     <a href={`/guides/${slug}/`} class={`transition-colors ${dark ? "hover:text-cream/80" : "hover:text-matcha"}`}>{title}</a>
   </h3>
 
-  <p class={`prose-body text-base leading-snug mb-7 ${dark ? "text-cream/85" : "text-espresso/70"}`}>
+  <p class={`prose-body text-base leading-snug mb-7 flex-1 ${dark ? "text-cream/85" : "text-espresso/70"}`}>
     {subtitle}
   </p>
 
-  <div class="flex flex-wrap items-center gap-4 pt-1">
+  <div class="flex flex-wrap items-center gap-4 pt-1 mt-auto">
     {comingSoon ? (
       <span class={`text-sm inline-flex items-center gap-2 ${dark ? "text-cream/70" : "text-forest/55"} label`}>
         Full guide coming soon

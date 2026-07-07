@@ -366,6 +366,14 @@ body {
 .tone-brown { background: #8C6A4D; border-color: transparent; }
 .tone-brown:hover { background: #7A5B41; }
 
+/* download buttons darken into their OWN card colour on hover/tap — never black */
+.tone-sagelight .btn-outline:hover { background: #C6CFB4; border-color: #B4BF9A; color: #33301F; }
+.tone-sage .btn-outline:hover      { background: #A9B591; border-color: #97A57C; color: #31371F; }
+.tone-sand .btn-outline:hover      { background: #D8C9A8; border-color: #C7B48D; color: #3C2B1D; }
+.tone-nude .btn-outline:hover      { background: #C4A385; border-color: #B18E6C; color: #3C2B1D; }
+.tone-moss .btn-outline-cream:hover  { background: #8C9B69; border-color: #8C9B69; color: #FBFAF6; }
+.tone-brown .btn-outline-cream:hover { background: #9E7C5D; border-color: #9E7C5D; color: #FBFAF6; }
+
 /* ---------- prose for guide pages ---------- */
 .prose-guide p {
   margin-block: 1.15em;
