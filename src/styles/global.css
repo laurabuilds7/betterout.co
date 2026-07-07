@@ -263,7 +263,7 @@ body {
   align-items: center;
   gap: 0.6rem;
   background: transparent;
-  color: var(--color-cocoa);
+  color: var(--color-matcha);
   font-family: var(--font-sans);
   font-weight: 600;
   font-size: 0.74rem;
@@ -271,11 +271,11 @@ body {
   text-transform: uppercase;
   padding: 1.05rem 1.9rem;
   border-radius: 3px;
-  border: 1px solid color-mix(in srgb, var(--color-cocoa) 45%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-sage) 55%, transparent);
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   text-decoration: none;
 }
-.btn-outline:hover { background: var(--color-cocoa); color: var(--color-cream); border-color: var(--color-cocoa); }
+.btn-outline:hover { background: var(--color-sage); color: var(--color-cream); border-color: var(--color-sage); }
 
 .btn-outline-cream {
   display: inline-flex;
