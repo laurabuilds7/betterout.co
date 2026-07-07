@@ -349,7 +349,7 @@ body {
 
 /* soft dusty sage (light, dark text) */
 .tone-sagelight { background: #D8DEC9; border-color: color-mix(in srgb, #7C8A5C 20%, transparent); }
-.tone-sagelight:hover { background: #C3CEA9; border-color: color-mix(in srgb, #7C8A5C 50%, transparent); }
+.tone-sagelight:hover { background: #B4C593; border-color: color-mix(in srgb, #7C8A5C 60%, transparent); }
 /* dusty sage (light, dark text) */
 .tone-sage { background: #BAC4A4; border-color: color-mix(in srgb, #7C8A5C 28%, transparent); }
 .tone-sage:hover { background: #A1AE81; }
