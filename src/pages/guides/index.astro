@@ -8,7 +8,7 @@ const guides = (await getCollection("guides")).sort(
 );
 const total = guides.reduce((n, g) => n + g.data.pages, 0);
 
-const gridOrder = ["the-method", "kitchen-apothecary", "nourished-littles", "steady", "low-tox-living", "roots"];
+const gridOrder = ["steady", "kitchen-apothecary", "nourished-littles", "the-method", "low-tox-living", "roots"];
 const rank = (s: string) => { const i = gridOrder.indexOf(s); return i === -1 ? 99 : i; };
 const displayGuides = [...guides].sort((a, b) => rank(a.data.slug) - rank(b.data.slug));
 
