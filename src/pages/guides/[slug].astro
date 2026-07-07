@@ -12,43 +12,53 @@ const { Content } = await render(guide);
 const all = (await getCollection("guides")).sort((a, b) => a.data.order - b.data.order);
 const idx = all.findIndex((g) => g.data.slug === guide.data.slug);
 const next = all[(idx + 1) % all.length];
-const roman = ["I","II","III","IV","V","VI","VII","VIII","IX","X"];
-const num = roman[guide.data.order - 1] ?? String(guide.data.order);
+
+// each guide page opens in its own card colour (soft, readable tint)
+const heroTintBySlug: Record<string, string> = {
+  "steady": "#F1EBDC",
+  "kitchen-apothecary": "#E4EFE0",
+  "nourished-littles": "#EDF1E6",
+  "the-method": "#F1E7DA",
+  "low-tox-living": "#E8EFDF",
+  "roots": "#F2E8DC",
+};
+const heroBg = heroTintBySlug[guide.data.slug] ?? "#EDF1E6";
 ---
 <Base title={guide.data.title} description={guide.data.subtitle}>
 
-  <section class="max-w-3xl mx-auto px-6 sm:px-10 pt-16 sm:pt-20 pb-12">
-    <a href="/guides/" class="label text-espresso/55 hover:text-espresso transition-colors inline-flex items-center gap-3 mb-14">
-      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
-      The Library
-    </a>
+  <!-- coloured hero, in this guide's own colour -->
+  <section class="relative" style={`background-color:${heroBg};`}>
+    <div class="max-w-3xl mx-auto px-6 sm:px-10 pt-12 sm:pt-16 pb-16 sm:pb-20">
+      <a href="/guides/" class="label text-matcha hover:text-forest transition-colors inline-flex items-center gap-2.5 mb-12">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+        Free guides
+      </a>
 
-    <div class="text-center mb-10">
-      <div class="label-wide text-espresso/55 mb-6">
-        {!guide.data.comingSoon && <span class="numeral text-sage text-lg mr-3">{num}</span>}
-        {guide.data.level}{guide.data.comingSoon ? " · coming soon" : ` · ${guide.data.pages} pages`}
+      <div class="text-center">
+        <div class="label-wide text-matcha mb-6">
+          {guide.data.level}{guide.data.comingSoon ? " · coming soon" : ` · ${guide.data.pages} pages`}
+        </div>
+
+        <h1 class="display text-cocoa leading-[1.02] text-5xl sm:text-7xl md:text-[5rem] mb-8">
+          {guide.data.title}
+        </h1>
+
+        <p class="lede max-w-2xl mx-auto">
+          {guide.data.subtitle}
+        </p>
       </div>
-
-      <h1 class="display text-espresso leading-[1.02] text-5xl sm:text-7xl md:text-[5.2rem] mb-8">
-        {guide.data.title}
-      </h1>
-
-      <p class="lede max-w-2xl mx-auto">
-        {guide.data.subtitle}
-      </p>
     </div>
+  </section>
 
-    <div class="rule-centre text-espresso/30 my-14">
-      <svg width="120" height="8" aria-hidden="true"><use href="#diamond-ornament"/></svg>
-    </div>
-
-    <div class="card-quiet p-9 sm:p-12 mb-14">
-      <p class="font-serif italic font-light text-espresso/85 leading-relaxed text-xl mb-9">
+  <!-- download + content -->
+  <section class="max-w-3xl mx-auto px-6 sm:px-10 pt-14 pb-8">
+    <div class="rounded-[22px] p-8 sm:p-11 mb-14" style="background-color:#E4EEE1;">
+      <p class="lede mb-9" style="color: color-mix(in srgb, var(--color-cocoa) 85%, transparent);">
         {guide.data.excerpt}
       </p>
       <div class="flex flex-wrap gap-5 items-center">
         {guide.data.comingSoon ? (
-          <span class="label text-espresso/55">The full guide is being written — check back soon.</span>
+          <span class="label text-cocoa/60">The full guide is being written — check back soon.</span>
         ) : (
           <a href={guide.data.pdf} download data-guide-download class="btn-espresso">
             Download · free PDF
@@ -63,15 +73,16 @@ const num = roman[guide.data.order - 1] ?? String(guide.data.order);
     </div>
   </section>
 
-  <section class="bg-bone-soft/50 border-t border-espresso/10 mt-20">
+  <!-- next guide -->
+  <section class="border-t border-espresso/10" style="background-color:#EDF1E6;">
     <div class="max-w-3xl mx-auto px-6 sm:px-10 py-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
       <div>
-        <div class="label-wide text-espresso/55 mb-3">Next in the library</div>
-        <a href={`/guides/${next.data.slug}/`} class="display text-3xl sm:text-4xl text-espresso hover:text-clay-deep transition-colors block">
+        <div class="label-wide text-matcha mb-3">Next guide</div>
+        <a href={`/guides/${next.data.slug}/`} class="display text-3xl sm:text-4xl text-forest hover:text-matcha transition-colors block">
           {next.data.title}
-          <svg width="14" height="14" aria-hidden="true" class="inline-block ml-2 -mt-1 text-espresso/55"><use href="#arrow-right"/></svg>
+          <svg width="14" height="14" aria-hidden="true" class="inline-block ml-2 -mt-1 text-matcha"><use href="#arrow-right"/></svg>
         </a>
-        <p class="font-serif italic font-light text-espresso/65 mt-2 text-lg">{next.data.subtitle}</p>
+        <p class="prose-body italic text-espresso/65 mt-2 text-lg">{next.data.subtitle}</p>
       </div>
       <a href="/guides/" class="btn-outline shrink-0">All guides</a>
     </div>
