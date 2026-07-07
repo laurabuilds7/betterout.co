@@ -8,6 +8,11 @@ const guides = (await getCollection("guides")).sort(
 );
 const totalPages = guides.reduce((n, g) => n + g.data.pages, 0);
 
+// explicit card order for the grid (restores the earlier arrangement)
+const gridOrder = ["the-method", "kitchen-apothecary", "nourished-littles", "steady", "low-tox-living", "roots"];
+const rank = (s: string) => { const i = gridOrder.indexOf(s); return i === -1 ? 99 : i; };
+const displayGuides = [...guides].sort((a, b) => rank(a.data.slug) - rank(b.data.slug));
+
 // Pinterest earthy palette — sage & moss greens, sand & nude browns
 const toneBySlug: Record<string, "sagelight" | "sage" | "moss" | "sand" | "nude" | "brown"> = {
   "the-method": "brown",            // coffee brown — the flagship how-to
@@ -142,7 +147,7 @@ const toneBySlug: Record<string, "sagelight" | "sage" | "moss" | "sand" | "nude"
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
-        {guides.map((g) => (
+        {displayGuides.map((g) => (
           <GuideCard
             title={g.data.title}
             subtitle={g.data.subtitle}
